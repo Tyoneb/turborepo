@@ -19,6 +19,6 @@ describe("convertCase", () => {
     "should convert '$input' to '$to'",
     ({ input, expected, to }) => {
       expect(convertCase(input, { to })).toBe(expected);
-    }
+    },
   );
 });

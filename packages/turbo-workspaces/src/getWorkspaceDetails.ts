@@ -16,7 +16,7 @@ export async function getWorkspaceDetails({
       `Could not find directory at ${workspaceRoot}. Ensure the directory exists.`,
       {
         type: "invalid_directory",
-      }
+      },
     );
   }
 
@@ -31,6 +31,6 @@ export async function getWorkspaceDetails({
     "Could not determine package manager. Add `packageManager` to `package.json` or ensure a lockfile is present.",
     {
       type: "package_manager-unable_to_detect",
-    }
+    },
   );
 }

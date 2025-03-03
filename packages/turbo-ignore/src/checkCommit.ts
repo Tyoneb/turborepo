@@ -47,7 +47,7 @@ export function checkCommit({ workspace }: { workspace: string }): {
   if (onlyWorkspaceDeployMatch) {
     if (
       onlyWorkspaceCommits({ workspace }).find(
-        (commit) => commit === onlyWorkspaceDeployMatch
+        (commit) => commit === onlyWorkspaceDeployMatch,
       )
     ) {
       return {
@@ -65,10 +65,10 @@ export function checkCommit({ workspace }: { workspace: string }): {
 
   // check other workspace specific messages
   const forceWorkspaceDeploy = forceWorkspaceCommits({ workspace }).find(
-    findInCommit
+    findInCommit,
   );
   const forceWorkspaceSkip = skipWorkspaceCommits({ workspace }).find(
-    findInCommit
+    findInCommit,
   );
 
   if (forceWorkspaceDeploy && forceWorkspaceSkip) {

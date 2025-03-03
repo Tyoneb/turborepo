@@ -21,10 +21,7 @@
       "underline": true
     }
   },
-  "cursor_position": [
-    20,
-    20
-  ],
+  "cursor_position": [20, 20],
   "title": "window title",
   "icon_name": "window icon name",
   "application_keypad": true,

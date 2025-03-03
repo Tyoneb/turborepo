@@ -490,7 +490,7 @@ describe("get-turbo-upgrade-command", () => {
       mockGetPackageManagersBinPaths.mockRestore();
       mockGetAvailablePackageManagers.mockRestore();
       mockGetWorkspaceDetails.mockRestore();
-    }
+    },
   );
 
   it.each(GLOBAL_INSTALL_COMMANDS)(
@@ -552,7 +552,7 @@ describe("get-turbo-upgrade-command", () => {
       mockGetPackageManagersBinPaths.mockRestore();
       mockGetAvailablePackageManagers.mockRestore();
       mockGetWorkspaceDetails.mockRestore();
-    }
+    },
   );
 
   describe("errors", () => {
@@ -656,7 +656,7 @@ describe("get-turbo-upgrade-command", () => {
         mockGetAvailablePackageManagers.mockRestore();
         mockGetWorkspaceDetails.mockRestore();
       },
-      10000
+      10000,
     );
   });
 });

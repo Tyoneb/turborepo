@@ -1,6 +1,6 @@
 {
- // some comments
- "pipeline": {
-   "build": {"dependsOn": ["^build"]}
- }
+  // some comments
+  "pipeline": {
+    "build": { "dependsOn": ["^build"] }
+  }
 }

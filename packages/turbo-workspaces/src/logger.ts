@@ -64,7 +64,7 @@ export class Logger {
       " ".repeat(INDENTATION),
       "-",
       this.dry ? picocolors.yellow("SKIPPED |") : picocolors.green("OK |"),
-      ...args
+      ...args,
     );
   }
 
@@ -73,7 +73,7 @@ export class Logger {
       " ".repeat(INDENTATION),
       "-",
       picocolors.red("ERROR |"),
-      ...args
+      ...args,
     );
   }
 
@@ -87,7 +87,7 @@ export class Logger {
       " ".repeat(INDENTATION * 3),
       "-",
       this.dry ? picocolors.yellow("SKIPPED |") : picocolors.green("OK |"),
-      ...args
+      ...args,
     );
   }
 
@@ -101,7 +101,7 @@ export class Logger {
       " ".repeat(INDENTATION * 3),
       "-",
       this.dry ? picocolors.yellow("SKIPPED |") : picocolors.green("OK |"),
-      ...args
+      ...args,
     );
   }
 

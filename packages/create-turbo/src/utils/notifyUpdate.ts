@@ -12,8 +12,8 @@ export async function notifyUpdate(): Promise<void> {
       logger.log();
       logger.log(
         picocolors.yellow(
-          picocolors.bold("A new version of `create-turbo` is available!")
-        )
+          picocolors.bold("A new version of `create-turbo` is available!"),
+        ),
       );
       logger.log();
     }

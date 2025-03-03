@@ -12,7 +12,7 @@ const codemodCli = new Command();
 codemodCli
   .name("@turbo/codemod")
   .description(
-    "Codemod transformations to help upgrade your Turborepo codebase when a feature is deprecated."
+    "Codemod transformations to help upgrade your Turborepo codebase when a feature is deprecated.",
   )
   .version(cliPkg.version, "-v, --version", "output the current version");
 
@@ -24,22 +24,22 @@ codemodCli
   .argument("[path]", "Directory where the transforms should be applied")
   .option(
     "--from <version>",
-    "Specify the version to migrate from (default: current version)"
+    "Specify the version to migrate from (default: current version)",
   )
   .option(
     "--to <version>",
-    "Specify the version to migrate to (default: latest)"
+    "Specify the version to migrate to (default: latest)",
   )
   .option("--install", "Install new version of turbo after migration", true)
   .option(
     "--force",
     "Bypass Git safety checks and forcibly run codemods",
-    false
+    false,
   )
   .option(
     "--dry, --dry-run, -d",
     "Dry run (no changes are made to files)",
-    false
+    false,
   )
   .option("--print", "Print transformed files to your terminal", false)
   .action(migrate);
@@ -53,13 +53,13 @@ codemodCli
   .option(
     "--force",
     "Bypass Git safety checks and forcibly run codemods",
-    false
+    false,
   )
   .option("--list", "List all available transforms", false)
   .option(
     "--dry, --dry-run, -d",
     "Dry run (no changes are made to files)",
-    false
+    false,
   )
   .option("--print", "Print transformed files to your terminal", false)
   .action(transform);

@@ -86,12 +86,12 @@ describe("TelemetryConfig", () => {
 
       assert.deepEqual(
         mockWriteFileSync.mock.calls[0].arguments[0],
-        mockConfigPath
+        mockConfigPath,
       );
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- types are wrong?
       const parsedSecondArg = JSON.parse(
-        mockWriteFileSync.mock.calls[0].arguments[1]
+        mockWriteFileSync.mock.calls[0].arguments[1],
       );
       assert.deepEqual(parsedSecondArg.telemetry_enabled, true);
       assert.deepEqual(typeof parsedSecondArg.telemetry_id, "string");
@@ -138,11 +138,11 @@ describe("TelemetryConfig", () => {
       assert.equal(mockWriteFileSync.mock.calls.length, 1);
       assert.deepEqual(
         mockWriteFileSync.mock.calls[0].arguments[0],
-        mockConfigPath
+        mockConfigPath,
       );
       assert.equal(
         typeof mockWriteFileSync.mock.calls[0].arguments[1],
-        "string"
+        "string",
       );
 
       assert.equal(result instanceof TelemetryConfig, true);
@@ -189,11 +189,11 @@ describe("TelemetryConfig", () => {
       assert.equal(mockWriteFileSync.mock.calls.length, 1);
       assert.equal(
         mockWriteFileSync.mock.calls[0].arguments[0],
-        mockConfigPath
+        mockConfigPath,
       );
       assert.equal(
         typeof mockWriteFileSync.mock.calls[0].arguments[1],
-        "string"
+        "string",
       );
       assert.equal(result instanceof TelemetryConfig, true);
       assert.equal(typeof result?.id, "string");

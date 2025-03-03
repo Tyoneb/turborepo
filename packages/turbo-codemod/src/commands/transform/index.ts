@@ -13,12 +13,12 @@ import type {
 export async function transform(
   transformName: TransformCommandArgument,
   directory: TransformCommandArgument,
-  options: TransformCommandOptions
+  options: TransformCommandOptions,
 ) {
   const transforms = loadTransformers();
   if (options.list) {
     logger.log(
-      transforms.map((t) => `- ${picocolors.cyan(t.name)}`).join("\n")
+      transforms.map((t) => `- ${picocolors.cyan(t.name)}`).join("\n"),
     );
     return process.exit(0);
   }
@@ -55,7 +55,7 @@ export async function transform(
       pageSize: transforms.length,
       choices: transforms.map((t) => ({
         name: `${picocolors.bold(t.name)} - ${picocolors.gray(
-          t.description
+          t.description,
         )} ${picocolors.gray(`(${t.introducedIn})`)}`,
         value: t.name,
       })),
@@ -82,8 +82,8 @@ export async function transform(
   if (!transformData) {
     logger.error(
       `Invalid transform choice ${picocolors.dim(
-        `(${transformName})`
-      )}, pick one of:`
+        `(${transformName})`,
+      )}, pick one of:`,
     );
     logger.error(transformKeys.map((key) => `- ${key}`).join("\n"));
     return process.exit(1);

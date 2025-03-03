@@ -32,7 +32,7 @@ const postProcess = <T>(item: T): T => {
         }
       }
       return [key, postProcess(value)];
-    })
+    }),
   ) as T;
 };
 

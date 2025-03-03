@@ -100,7 +100,7 @@ async function create(args: CreateArgs): Promise<void> {
       "Unable to convert project to bun - workspace globs unsupported",
       {
         type: "bun-workspace_glob_error",
-      }
+      },
     );
   }
 
@@ -109,7 +109,7 @@ async function create(args: CreateArgs): Promise<void> {
       packageManager: PACKAGE_MANAGER_DETAILS.name,
       action: "create",
       project,
-    })
+    }),
   );
   const packageJson = getPackageJson({ workspaceRoot: project.paths.root });
   logger.rootHeader();
@@ -118,8 +118,8 @@ async function create(args: CreateArgs): Promise<void> {
   logger.rootStep(
     `adding "packageManager" field to ${path.relative(
       project.paths.root,
-      project.paths.packageJson
-    )}`
+      project.paths.packageJson,
+    )}`,
   );
   // TODO: This technically isn't valid as part of the spec (yet)
   packageJson.packageManager = `${to.name}@${to.version}`;
@@ -129,8 +129,8 @@ async function create(args: CreateArgs): Promise<void> {
     logger.rootStep(
       `adding "workspaces" field to ${path.relative(
         project.paths.root,
-        project.paths.packageJson
-      )}`
+        project.paths.packageJson,
+      )}`,
     );
     packageJson.workspaces = project.workspaceData.globs;
 
@@ -173,19 +173,19 @@ async function remove(args: RemoveArgs): Promise<void> {
       packageManager: PACKAGE_MANAGER_DETAILS.name,
       action: "remove",
       project,
-    })
+    }),
   );
   const packageJson = getPackageJson({ workspaceRoot: project.paths.root });
 
   if (hasWorkspaces) {
     logger.subStep(
-      `removing "workspaces" field in ${project.name} root "package.json"`
+      `removing "workspaces" field in ${project.name} root "package.json"`,
     );
     delete packageJson.workspaces;
   }
 
   logger.subStep(
-    `removing "packageManager" field in ${project.name} root "package.json"`
+    `removing "packageManager" field in ${project.name} root "package.json"`,
   );
   delete packageJson.packageManager;
 
@@ -201,8 +201,8 @@ async function remove(args: RemoveArgs): Promise<void> {
       logger.subStep(`removing "node_modules"`);
       await Promise.all(
         allModulesDirs.map((dir) =>
-          fs.rm(dir, { recursive: true, force: true })
-        )
+          fs.rm(dir, { recursive: true, force: true }),
+        ),
       );
     } catch (err) {
       throw new ConvertError("Failed to remove node_modules", {
@@ -222,7 +222,7 @@ async function clean(args: CleanArgs): Promise<void> {
   const { project, logger, options } = args;
 
   logger.subStep(
-    `removing ${path.relative(project.paths.root, project.paths.lockfile)}`
+    `removing ${path.relative(project.paths.root, project.paths.lockfile)}`,
   );
   if (!options?.dry) {
     fs.rmSync(project.paths.lockfile, { force: true });

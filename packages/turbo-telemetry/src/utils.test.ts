@@ -11,7 +11,7 @@ describe("utils", () => {
       const result = utils.oneWayHashWithSalt({ input, salt });
       assert.equal(
         result,
-        "568d39ba8435f9c37e80e01c6bb6e27d7b65b4edf837e44dee662ffc99206eec"
+        "568d39ba8435f9c37e80e01c6bb6e27d7b65b4edf837e44dee662ffc99206eec",
       );
     });
 

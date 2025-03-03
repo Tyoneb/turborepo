@@ -159,16 +159,16 @@ export class TelemetryConfig {
       logger.log();
       logger.bold("Attention:");
       logger.grey(
-        "Turborepo now collects completely anonymous telemetry regarding usage."
+        "Turborepo now collects completely anonymous telemetry regarding usage.",
       );
       logger.grey(
-        "This information is used to shape the Turborepo roadmap and prioritize features."
+        "This information is used to shape the Turborepo roadmap and prioritize features.",
       );
       logger.grey(
-        "You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:"
+        "You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:",
       );
       logger.underline(
-        picocolors.gray("https://turbo.build/repo/docs/telemetry")
+        picocolors.gray("https://turbo.build/repo/docs/telemetry"),
       );
     }
 

@@ -8,10 +8,10 @@ describe("packager", () => {
   describe("packAndPublish", () => {
     it("should pack and publish for all platforms when skipPublish is false", async (t) => {
       const mockPackPlatform = mock.fn(() =>
-        Promise.resolve("/path/to/artifact.tgz")
+        Promise.resolve("/path/to/artifact.tgz"),
       );
       const mockPublishArtifacts = mock.fn((_paths: Array<string>) =>
-        Promise.resolve()
+        Promise.resolve(),
       );
       t.mock.method(operations, "packPlatform", mockPackPlatform);
       t.mock.method(operations, "publishArtifacts", mockPublishArtifacts);
@@ -35,7 +35,7 @@ describe("packager", () => {
 
     it("should pack but not publish when skipPublish is true", async (t) => {
       const mockPackPlatform = mock.fn(() =>
-        Promise.resolve("/path/to/artifact.tgz")
+        Promise.resolve("/path/to/artifact.tgz"),
       );
       const mockPublishArtifacts = mock.fn();
 

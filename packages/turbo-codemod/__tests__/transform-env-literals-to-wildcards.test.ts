@@ -194,7 +194,7 @@ describe.only("transform-env-literals-to-wildcards", () => {
     expect(read("turbo.json")).toBeUndefined();
     expect(result.fatalError).toBeDefined();
     expect(result.fatalError?.message).toMatch(
-      /No turbo\.json found at .*?\. Is the path correct\?/
+      /No turbo\.json found at .*?\. Is the path correct\?/,
     );
   });
 
@@ -212,7 +212,7 @@ describe.only("transform-env-literals-to-wildcards", () => {
 
     expect(result.fatalError).toBeDefined();
     expect(result.fatalError?.message).toMatch(
-      'turbo" key detected in package.json. Run `npx @turbo/codemod transform create-turbo-config` first'
+      'turbo" key detected in package.json. Run `npx @turbo/codemod transform create-turbo-config` first',
     );
   });
 });

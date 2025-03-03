@@ -8,12 +8,12 @@ describe("getWorkspace()", () => {
     expect(
       getWorkspace({
         workspace: "test-workspace",
-      })
+      }),
     ).toEqual("test-workspace");
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Using "test-workspace" as workspace from arguments'
+      'Using "test-workspace" as workspace from arguments',
     );
   });
 
@@ -21,11 +21,11 @@ describe("getWorkspace()", () => {
     expect(
       getWorkspace({
         directory: "./__fixtures__/app",
-      })
+      }),
     ).toEqual("test-app");
     expect(mockConsole.log).toHaveBeenCalledWith(
       "≫  ",
-      'Inferred "test-app" as workspace from "package.json"'
+      'Inferred "test-app" as workspace from "package.json"',
     );
   });
 
@@ -33,7 +33,7 @@ describe("getWorkspace()", () => {
     expect(getWorkspace({})).toEqual("turbo-ignore");
     expect(mockConsole.log).toHaveBeenCalledWith(
       "≫  ",
-      'Inferred "turbo-ignore" as workspace from "package.json"'
+      'Inferred "turbo-ignore" as workspace from "package.json"',
     );
   });
 
@@ -41,11 +41,11 @@ describe("getWorkspace()", () => {
     expect(
       getWorkspace({
         directory: "./__fixtures__/invalid-app",
-      })
+      }),
     ).toEqual(null);
     expect(mockConsole.error).toHaveBeenCalledWith(
       "≫  ",
-      '"__fixtures__/invalid-app/package.json" is missing the "name" field (required).'
+      '"__fixtures__/invalid-app/package.json" is missing the "name" field (required).',
     );
   });
 
@@ -53,11 +53,11 @@ describe("getWorkspace()", () => {
     expect(
       getWorkspace({
         directory: "./__fixtures__/no-app",
-      })
+      }),
     ).toEqual(null);
     expect(mockConsole.error).toHaveBeenCalledWith(
       "≫  ",
-      '"__fixtures__/no-app/package.json" could not be found. turbo-ignore inferencing failed'
+      '"__fixtures__/no-app/package.json" could not be found. turbo-ignore inferencing failed',
     );
   });
 });

@@ -26,8 +26,8 @@ For tasks that you run frequently, you can write your `turbo` commands directly 
     "dev": "turbo run dev",
     "build": "turbo run build",
     "test": "turbo run test",
-    "lint": "turbo run lint"
-  }
+    "lint": "turbo run lint",
+  },
 }
 ```
 
@@ -158,6 +158,7 @@ turbo build --filter=...ui
 ```
 
 ### Filtering to include dependencies
+
 To limit the scope to a package and its dependencies, append `...` to the package name. This runs the task for the specified package and all packages it depends on.
 
 ```bash title="Terminal"

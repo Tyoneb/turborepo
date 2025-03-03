@@ -34,7 +34,7 @@ function trackOptions(opts: CreateCommandOptions) {
 
 function handleErrors(
   err: unknown,
-  telemetry: CreateCommandOptions["telemetry"]
+  telemetry: CreateCommandOptions["telemetry"],
 ) {
   telemetry?.trackCommandStatus({ command: "create", status: "error" });
   // handle errors from ../../transforms
@@ -69,7 +69,7 @@ const SCRIPTS_TO_DISPLAY: Record<string, string> = {
 
 export async function create(
   directory: CreateCommandArgument,
-  opts: CreateCommandOptions
+  opts: CreateCommandOptions,
 ) {
   // track CLI command start
   opts.telemetry?.trackCommandStatus({ command: "create", status: "start" });
@@ -87,7 +87,7 @@ export async function create(
 
   if (!online) {
     error(
-      "You appear to be offline. Please check your network connection and try again."
+      "You appear to be offline. Please check your network connection and try again.",
     );
     process.exit(1);
   }
@@ -103,7 +103,7 @@ export async function create(
 
   if (packageManager && opts.skipTransforms) {
     warn(
-      "--skip-transforms conflicts with <package-manager>. The package manager argument will be ignored."
+      "--skip-transforms conflicts with <package-manager>. The package manager argument will be ignored.",
     );
   }
 
@@ -158,7 +158,7 @@ export async function create(
           // add first to ensure any transforms that add new files are included
           tryGitAdd();
           tryGitCommit(
-            `feat(create-turbo): apply ${transformResult.name} transform`
+            `feat(create-turbo): apply ${transformResult.name} transform`,
           );
         }
 
@@ -198,7 +198,7 @@ export async function create(
         };
         return {
           group: assignGroupTitle(
-            path.relative(root, w.paths.root).split(path.sep)[0] || ""
+            path.relative(root, w.paths.root).split(path.sep)[0] || "",
           ),
           title: path.relative(root, w.paths.root),
           description: w.description,
@@ -212,7 +212,7 @@ export async function create(
         logger.log(picocolors.cyan(group));
       }
       logger.log(
-        ` - ${picocolors.bold(title)}${description ? `: ${description}` : ""}`
+        ` - ${picocolors.bold(title)}${description ? `: ${description}` : ""}`,
       );
       lastGroup = group;
     });
@@ -231,10 +231,10 @@ export async function create(
       !availablePackageManagers[project.packageManager]
     ) {
       warn(
-        `Unable to install dependencies - "${exampleName}" uses "${project.packageManager}" which could not be found.`
+        `Unable to install dependencies - "${exampleName}" uses "${project.packageManager}" which could not be found.`,
       );
       warn(
-        `Try running without "--skip-transforms" to convert "${exampleName}" to a package manager that is available on your system.`
+        `Try running without "--skip-transforms" to convert "${exampleName}" to a package manager that is available on your system.`,
       );
       logger.log();
     } else if (projectPackageManager.version) {
@@ -255,8 +255,8 @@ export async function create(
   if (!isMaintainedByCoreTeam) {
     logger.log(
       picocolors.dim(
-        "Note: This is a community-maintained example.\nIf you experience a problem, please submit a pull request with a fix.\nGitHub Issues will be closed."
-      )
+        "Note: This is a community-maintained example.\nIf you experience a problem, please submit a pull request with a fix.\nGitHub Issues will be closed.",
+      ),
     );
     logger.log();
   }
@@ -264,14 +264,14 @@ export async function create(
   if (projectDirIsCurrentDir) {
     logger.log(
       `${picocolors.bold(
-        turboGradient(">>> Success!")
-      )} Your new Turborepo is ready.`
+        turboGradient(">>> Success!"),
+      )} Your new Turborepo is ready.`,
     );
   } else {
     logger.log(
       `${picocolors.bold(
-        turboGradient(">>> Success!")
-      )} Created your Turborepo at ${picocolors.green(relativeProjectDir)}`
+        turboGradient(">>> Success!"),
+      )} Created your Turborepo at ${picocolors.green(relativeProjectDir)}`,
     );
   }
 
@@ -283,14 +283,14 @@ export async function create(
     if (!projectDirIsCurrentDir) {
       logger.log(
         `- Change to the directory: ${picocolors.cyan(
-          `cd ${relativeProjectDir}`
-        )}`
+          `cd ${relativeProjectDir}`,
+        )}`,
       );
     }
     logger.log(
       `- Enable Remote Caching (recommended): ${picocolors.cyan(
-        `${packageManagerMeta.executable} turbo login`
-      )}`
+        `${packageManagerMeta.executable} turbo login`,
+      )}`,
     );
     logger.log("   - Learn more: https://turbo.build/repo/remote-cache");
     logger.log();
@@ -300,8 +300,8 @@ export async function create(
       .forEach((script) => {
         logger.log(
           `   - ${picocolors.cyan(
-            `${packageManagerMeta.command} run ${script}`
-          )}: ${SCRIPTS_TO_DISPLAY[script]} all apps and packages`
+            `${packageManagerMeta.command} run ${script}`,
+          )}: ${SCRIPTS_TO_DISPLAY[script]} all apps and packages`,
         );
       });
     logger.log("- Run a command twice to hit cache");

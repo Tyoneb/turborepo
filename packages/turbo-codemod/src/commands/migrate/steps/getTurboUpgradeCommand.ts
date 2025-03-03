@@ -15,7 +15,7 @@ type InstallType = "dependencies" | "devDependencies";
 
 function getGlobalUpgradeCommand(
   packageManager: PackageManager,
-  to = "latest"
+  to = "latest",
 ) {
   switch (packageManager) {
     case "yarn":
@@ -43,7 +43,7 @@ function getLocalUpgradeCommand({
   to?: string;
 }) {
   const renderCommand = (
-    command: Array<string | boolean | undefined>
+    command: Array<string | boolean | undefined>,
   ): string => command.filter(Boolean).join(" ");
   switch (packageManager) {
     // yarn command differs depending on the version
@@ -132,7 +132,7 @@ export async function getTurboUpgradeCommand({
   });
   const packageManagerGlobalBinaryPaths = await getPackageManagersBinPaths();
   const globalPackageManager = Object.keys(
-    packageManagerGlobalBinaryPaths
+    packageManagerGlobalBinaryPaths,
   ).find((packageManager) => {
     const packageManagerBinPath =
       packageManagerGlobalBinaryPaths[packageManager as PackageManager];

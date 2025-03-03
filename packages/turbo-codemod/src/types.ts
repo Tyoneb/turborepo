@@ -6,7 +6,7 @@ export interface Transformer {
   introducedIn: string;
   idempotent?: boolean;
   transformer: (
-    args: TransformerArgs
+    args: TransformerArgs,
   ) => Promise<TransformerResults> | TransformerResults;
 }
 

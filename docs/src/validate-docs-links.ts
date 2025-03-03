@@ -37,7 +37,7 @@ const validateAllInternalLinks = async (): Promise<void> => {
   console.log(
     `Found ${plural ? "these" : "a"} broken link${
       plural ? "s" : ""
-    } in the docs:`
+    } in the docs:`,
   );
   console.table(reportRows);
   process.exit(1);

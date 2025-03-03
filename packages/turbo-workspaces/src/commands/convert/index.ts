@@ -30,7 +30,7 @@ function isPackageManagerDisabled({
 export async function convertCommand(
   directory: ConvertCommandArgument,
   packageManager: ConvertCommandArgument,
-  options: ConvertCommandOptions
+  options: ConvertCommandOptions,
 ) {
   const logger = new Logger(options);
 

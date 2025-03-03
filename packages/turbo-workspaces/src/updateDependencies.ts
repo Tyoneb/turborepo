@@ -109,7 +109,7 @@ export function updateDependencies({
     .filter(Boolean) as Array<string>;
   const workspaceLocation = `./${path.relative(
     project.paths.root,
-    workspace.paths.packageJson
+    workspace.paths.packageJson,
   )}`;
   if (allChanges.length >= 1) {
     let logLine = "updating";
@@ -126,7 +126,7 @@ export function updateDependencies({
     logger.workspaceStep(logLine);
   } else {
     logger.workspaceStep(
-      `no workspace dependencies found in ${workspaceLocation}`
+      `no workspace dependencies found in ${workspaceLocation}`,
     );
   }
 

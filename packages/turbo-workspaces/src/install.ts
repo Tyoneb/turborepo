@@ -83,12 +83,12 @@ export const PACKAGE_MANAGERS: Record<
 };
 
 export function getPackageManagerMeta(
-  packageManager: RequestedPackageManagerDetails
+  packageManager: RequestedPackageManagerDetails,
 ) {
   const { version, name } = packageManager;
   if (version) {
     return PACKAGE_MANAGERS[name].find((manager) =>
-      satisfies(version, manager.semver)
+      satisfies(version, manager.semver),
     );
   }
   return PACKAGE_MANAGERS[name].find((manager) => {
@@ -110,8 +110,8 @@ export async function install(args: InstallArgs) {
 
   installLogger.subStep(
     `running "${packageManager.command} ${packageManager.installArgs.join(
-      " "
-    )}"`
+      " ",
+    )}"`,
   );
   if (!options?.dry) {
     let spinner;

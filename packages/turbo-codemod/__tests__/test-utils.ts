@@ -31,11 +31,11 @@ export function getWorkspaceDetailsMockReturnValue({
                 root: path.join(root, "packages/mock-package"),
                 packageJson: path.join(
                   root,
-                  "packages/mock-package/package.json"
+                  "packages/mock-package/package.json",
                 ),
                 nodeModules: path.join(
                   root,
-                  "packages/mock-package/node_modules"
+                  "packages/mock-package/node_modules",
                 ),
               },
             },

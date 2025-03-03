@@ -42,7 +42,7 @@ describe("add-package-names", () => {
 
     for (const pkg of ["ui", "utils"]) {
       const pkgJson = readJson<{ name: string }>(
-        `packages/${pkg}/package.json`
+        `packages/${pkg}/package.json`,
       );
       expect(pkgJson?.name).toBeDefined();
       expect(names.has(pkgJson?.name)).toBe(false);
@@ -79,7 +79,7 @@ describe("add-package-names", () => {
 
     for (const pkg of ["ui", "utils"]) {
       const pkgJson = readJson<{ name: string }>(
-        `packages/${pkg}/package.json`
+        `packages/${pkg}/package.json`,
       );
       expect(pkgJson?.name).toBeDefined();
       expect(names.has(pkgJson?.name)).toBe(false);
@@ -108,7 +108,7 @@ describe("add-package-names", () => {
 
     for (const pkg of ["ui", "utils"]) {
       const pkgJson = readJson<{ name: string }>(
-        `packages/${pkg}/package.json`
+        `packages/${pkg}/package.json`,
       );
       expect(pkgJson?.name).toBeDefined();
       expect(names.has(pkgJson?.name)).toBe(false);
@@ -143,7 +143,7 @@ describe("add-package-names", () => {
 
     const unchangedPkg = "ui";
     const unchangedPkgJson = readJson<{ name: string }>(
-      `packages/${unchangedPkg}/package.json`
+      `packages/${unchangedPkg}/package.json`,
     );
     expect(unchangedPkgJson?.name).toBeUndefined();
   });

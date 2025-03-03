@@ -18,15 +18,15 @@ console.log("Executing turbo build in child process", {
 
 const ubuntu = getTTFTData(
   path.join(process.cwd(), "profiles", "ubuntu-ttft.json"),
-  runID
+  runID,
 );
 const macos = getTTFTData(
   path.join(process.cwd(), "profiles", "macos-ttft.json"),
-  runID
+  runID,
 );
 const windows = getTTFTData(
   path.join(process.cwd(), "profiles", "windows-ttft.json"),
-  runID
+  runID,
 );
 
 uploadAggregate()

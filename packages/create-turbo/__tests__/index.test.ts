@@ -77,7 +77,7 @@ describe("create-turbo", () => {
           getWorkspaceDetailsMockReturnValue({
             root,
             packageManager,
-          })
+          }),
         );
 
       const mockExecSync = jest
@@ -94,41 +94,41 @@ describe("create-turbo", () => {
       });
 
       const expected = `${picocolors.bold(
-        logger.turboGradient(">>> Success!")
+        logger.turboGradient(">>> Success!"),
       )} Created your Turborepo at ${picocolors.green(
-        path.relative(process.cwd(), root)
+        path.relative(process.cwd(), root),
       )}`;
       expect(mockConsole.log).toHaveBeenCalledWith(expected);
       expect(mockConsole.log).toHaveBeenCalledWith();
       expect(mockConsole.log).toHaveBeenCalledWith(
-        picocolors.bold("To get started:")
+        picocolors.bold("To get started:"),
       );
 
       expect(mockConsole.log).toHaveBeenCalledWith(
-        picocolors.cyan("Library packages")
+        picocolors.cyan("Library packages"),
       );
 
       expect(mockConsole.log).toHaveBeenCalledWith(
-        "- Run commands with Turborepo:"
+        "- Run commands with Turborepo:",
       );
 
       availableScripts.forEach((script) => {
         expect(mockConsole.log).toHaveBeenCalledWith(
           expect.stringContaining(
-            picocolors.cyan(`${packageManager} run ${script}`)
-          )
+            picocolors.cyan(`${packageManager} run ${script}`),
+          ),
         );
       });
 
       expect(mockConsole.log).toHaveBeenCalledWith(
-        "- Run a command twice to hit cache"
+        "- Run a command twice to hit cache",
       );
 
       mockAvailablePackageManagers.mockRestore();
       mockCreateProject.mockRestore();
       mockGetWorkspaceDetails.mockRestore();
       mockExecSync.mockRestore();
-    }
+    },
   );
 
   it.each<{ packageManager: PackageManager }>([
@@ -166,7 +166,7 @@ describe("create-turbo", () => {
           getWorkspaceDetailsMockReturnValue({
             root,
             packageManager,
-          })
+          }),
         );
 
       const mockExecSync = jest
@@ -183,40 +183,40 @@ describe("create-turbo", () => {
       });
 
       const expected = `${picocolors.bold(
-        logger.turboGradient(">>> Success!")
+        logger.turboGradient(">>> Success!"),
       )} Created your Turborepo at ${picocolors.green(
-        path.relative(process.cwd(), root)
+        path.relative(process.cwd(), root),
       )}`;
       expect(mockConsole.log).toHaveBeenCalledWith(expected);
       expect(mockConsole.log).toHaveBeenCalledWith();
       expect(mockConsole.log).toHaveBeenCalledWith(
-        picocolors.bold("To get started:")
+        picocolors.bold("To get started:"),
       );
 
       expect(mockConsole.log).toHaveBeenCalledWith(
-        picocolors.cyan("Library packages")
+        picocolors.cyan("Library packages"),
       );
 
       expect(mockConsole.log).toHaveBeenCalledWith(
-        "- Run commands with Turborepo:"
+        "- Run commands with Turborepo:",
       );
 
       availableScripts.forEach((script) => {
         expect(mockConsole.log).toHaveBeenCalledWith(
           expect.stringContaining(
-            picocolors.cyan(`${packageManager} run ${script}`)
-          )
+            picocolors.cyan(`${packageManager} run ${script}`),
+          ),
         );
       });
 
       expect(mockConsole.log).toHaveBeenCalledWith(
-        "- Run a command twice to hit cache"
+        "- Run a command twice to hit cache",
       );
       mockAvailablePackageManagers.mockRestore();
       mockCreateProject.mockRestore();
       mockGetWorkspaceDetails.mockRestore();
       mockExecSync.mockRestore();
-    }
+    },
   );
 
   it("throws correct error message when a download error is encountered", async () => {
@@ -241,7 +241,7 @@ describe("create-turbo", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     const mockExecSync = jest
@@ -261,12 +261,12 @@ describe("create-turbo", () => {
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       1,
       logger.turboRed(picocolors.bold(">>>")),
-      picocolors.red("Unable to download template from GitHub")
+      picocolors.red("Unable to download template from GitHub"),
     );
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       2,
       logger.turboRed(picocolors.bold(">>>")),
-      picocolors.red("Could not connect")
+      picocolors.red("Could not connect"),
     );
     expect(mockExit.exit).toHaveBeenCalledWith(1);
 

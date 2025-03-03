@@ -275,7 +275,7 @@ describe("create-turbo-config", () => {
 
     // result should be correct
     expect(result.fatalError?.message).toMatch(
-      /No package\.json found at .*?\. Is the path correct\?/
+      /No package\.json found at .*?\. Is the path correct\?/,
     );
   });
 
@@ -393,7 +393,7 @@ describe("create-turbo-config", () => {
     // result should be correct
     expect(result.fatalError).toBeDefined();
     expect(result.fatalError?.message).toMatch(
-      "Encountered an error while transforming files"
+      "Encountered an error while transforming files",
     );
     expect(result.changes).toMatchInlineSnapshot(`
       {

@@ -25,18 +25,18 @@ export function checkGitStatus({
     if (force) {
       logger.log(
         `${picocolors.yellow(
-          "WARNING"
-        )}: ${errorMessage}. Forcibly continuing...`
+          "WARNING",
+        )}: ${errorMessage}. Forcibly continuing...`,
       );
     } else {
       logger.log("Thank you for using @turbo/codemod!");
       logger.log(
         picocolors.yellow(
-          "\nBut before we continue, please stash or commit your git changes."
-        )
+          "\nBut before we continue, please stash or commit your git changes.",
+        ),
       );
       logger.log(
-        "\nYou may use the --force flag to override this safety check."
+        "\nYou may use the --force flag to override this safety check.",
       );
       process.exit(1);
     }

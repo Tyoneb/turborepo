@@ -51,7 +51,7 @@ describe("turboIgnore()", () => {
           return callback(
             { message: "error details" } as unknown as ExecException,
             "stdout",
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -62,13 +62,13 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-workspace...[HEAD^]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      "UNKNOWN_ERROR: error details"
+      "UNKNOWN_ERROR: error details",
     );
 
     expectBuild(mockExit);
@@ -86,7 +86,7 @@ describe("turboIgnore()", () => {
                 "run failed: We did not detect an in-use package manager for your project",
             } as unknown as ExecException,
             "stdout",
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -97,13 +97,13 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-workspace...[HEAD^]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     expect(mockConsole.warn).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      `turbo-ignore could not complete - no package manager detected, please commit a lockfile, or set "packageManager" in your root "package.json"`
+      `turbo-ignore could not complete - no package manager detected, please commit a lockfile, or set "packageManager" in your root "package.json"`,
     );
 
     expectBuild(mockExit);
@@ -129,7 +129,7 @@ describe("turboIgnore()", () => {
                 " ERROR  run failed: failed to resolve packages to run: commit too-far-back does not exist",
             } as unknown as ExecException,
             "stdout",
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -140,13 +140,13 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-workspace...[too-far-back]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     expect(mockConsole.warn).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      `turbo-ignore could not complete - a ref or SHA is invalid. It could have been removed from the branch history via a force push, or this could be a shallow clone with insufficient history`
+      `turbo-ignore could not complete - a ref or SHA is invalid. It could have been removed from the branch history via a force push, or this could be a shallow clone with insufficient history`,
     );
 
     expectBuild(mockExit);
@@ -165,7 +165,7 @@ describe("turboIgnore()", () => {
                 "ERROR run failed: failed to resolve packages to run: commit HEAD^ does not exist",
             } as unknown as ExecException,
             "stdout",
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -176,13 +176,13 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-workspace...[HEAD^]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     expect(mockConsole.warn).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      `turbo-ignore could not complete - parent commit does not exist or is unreachable`
+      `turbo-ignore could not complete - parent commit does not exist or is unreachable`,
     );
 
     expectBuild(mockExit);
@@ -195,8 +195,8 @@ describe("turboIgnore()", () => {
       1,
       "≫  ",
       expect.stringContaining(
-        " could not be found. turbo-ignore inferencing failed"
-      )
+        " could not be found. turbo-ignore inferencing failed",
+      ),
     );
 
     expectBuild(mockExit);
@@ -207,7 +207,7 @@ describe("turboIgnore()", () => {
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      expect.stringContaining(' is missing the "name" field (required).')
+      expect.stringContaining(' is missing the "name" field (required).'),
     );
     expectBuild(mockExit);
   });
@@ -218,7 +218,7 @@ describe("turboIgnore()", () => {
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      "Monorepo root not found. turbo-ignore inferencing failed"
+      "Monorepo root not found. turbo-ignore inferencing failed",
     );
   });
 
@@ -228,7 +228,7 @@ describe("turboIgnore()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       2,
       "≫  ",
-      "`TURBO_FORCE` detected"
+      "`TURBO_FORCE` detected",
     );
     expectBuild(mockExit);
   });
@@ -241,7 +241,7 @@ describe("turboIgnore()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       5,
       "≫  ",
-      'No previous deployments found for "test-app" on branch "my-branch"'
+      'No previous deployments found for "test-app" on branch "my-branch"',
     );
     expectBuild(mockExit);
   });
@@ -262,7 +262,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages":[],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -309,7 +309,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages":["test-app"],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -359,7 +359,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages":["test-app", "ui"],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -406,7 +406,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages":["test-app", "ui", "tsconfig"],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -461,7 +461,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages":["test-app"],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -512,13 +512,13 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Failed to parse JSON output from `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`.'
+      'Failed to parse JSON output from `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`.',
     );
 
     expectBuild(mockExit);
@@ -533,7 +533,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             null as unknown as string,
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -544,13 +544,13 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     expect(mockConsole.error).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Failed to parse JSON output from `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`.'
+      'Failed to parse JSON output from `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`.',
     );
 
     expectBuild(mockExit);
@@ -616,7 +616,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages":[],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -661,7 +661,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages": [],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -672,7 +672,7 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`,
       expect.objectContaining({ maxBuffer: 1024 }),
-      expect.anything()
+      expect.anything(),
     );
 
     mockExec.mockRestore();
@@ -686,7 +686,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages": [],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -701,7 +701,7 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo@^2 run build --filter="test-app...[HEAD^]" --dry=json`,
       expect.objectContaining({ maxBuffer: 1024 }),
-      expect.anything()
+      expect.anything(),
     );
 
     mockExec.mockRestore();
@@ -715,7 +715,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -737,7 +737,7 @@ describe("turboIgnore()", () => {
           return callback(
             null,
             '{"packages": [],"tasks":[]}',
-            "stderr"
+            "stderr",
           ) as unknown as ChildProcess;
         }
         return {} as unknown as ChildProcess;
@@ -748,7 +748,7 @@ describe("turboIgnore()", () => {
     expect(mockExec).toHaveBeenCalledWith(
       `npx -y turbo run build --filter="test-app...[HEAD^]" --dry=json`,
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
 
     mockExec.mockRestore();

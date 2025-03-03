@@ -24,11 +24,11 @@ export async function notifyUpdate(): Promise<void> {
       logger.log();
       logger.log(
         picocolors.yellow(
-          picocolors.bold("A new version of `@turbo/codemod` is available!")
-        )
+          picocolors.bold("A new version of `@turbo/codemod` is available!"),
+        ),
       );
       logger.log(
-        `You can update by running: ${picocolors.cyan(upgradeCommand)}`
+        `You can update by running: ${picocolors.cyan(upgradeCommand)}`,
       );
       logger.log();
     }

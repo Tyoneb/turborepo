@@ -61,7 +61,7 @@ interface ProfileItem {
 type ProfileJSON = Array<ProfileItem>;
 
 const profileJSON = JSON.parse(
-  fs.readFileSync(fullProfilePath).toString()
+  fs.readFileSync(fullProfilePath).toString(),
 ) as ProfileJSON;
 
 const ttftData: TTFTData = {

@@ -31,7 +31,7 @@ function continueBuild() {
 
 export function turboIgnore(
   workspaceArg: TurboIgnoreArg,
-  opts: TurboIgnoreOptions
+  opts: TurboIgnoreOptions,
 ) {
   opts.telemetry?.trackCommandStatus({ command: "ignore", status: "start" });
   opts.telemetry?.trackArgumentWorkspace(workspaceArg !== undefined);
@@ -43,7 +43,7 @@ export function turboIgnore(
   };
 
   info(
-    `Using Turborepo to determine if this project is affected by the commit...\n`
+    `Using Turborepo to determine if this project is affected by the commit...\n`,
   );
 
   // set default directory
@@ -53,7 +53,7 @@ export function turboIgnore(
       inputs.directory = directory;
     } else {
       warn(
-        `Directory "${opts.directory}" does not exist, using current directory`
+        `Directory "${opts.directory}" does not exist, using current directory`,
       );
       inputs.directory = process.cwd();
     }
@@ -153,7 +153,7 @@ export function turboIgnore(
           info(
             `This commit affects "${workspace}" and ${packages.length - 1} ${
               packages.length - 1 === 1 ? "dependency" : "dependencies"
-            } (${packages.slice(1).join(", ")})`
+            } (${packages.slice(1).join(", ")})`,
           );
         }
 

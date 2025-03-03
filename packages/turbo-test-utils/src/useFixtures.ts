@@ -36,8 +36,8 @@ export function setupTestFixtures({
           maxRetries: 5,
           recursive: true,
           force: true,
-        })
-      )
+        }),
+      ),
     );
   });
 
@@ -85,7 +85,7 @@ export function setupTestFixtures({
 
     const write = (
       filename: string,
-      content: string | NodeJS.ArrayBufferView
+      content: string | NodeJS.ArrayBufferView,
     ) => {
       writeFileSync(getFilePath(filename), content);
     };
@@ -96,10 +96,10 @@ export function setupTestFixtures({
 
     const read = readGenerator((filePath) => readFileSync(filePath, "utf8"));
     const readJson = readGenerator((filePath) =>
-      JSON5Parse(readFileSync(filePath, "utf8"))
+      JSON5Parse(readFileSync(filePath, "utf8")),
     );
     const readYaml = readGenerator((filePath) =>
-      yaml.load(readFileSync(filePath, "utf8"))
+      yaml.load(readFileSync(filePath, "utf8")),
     );
 
     return {

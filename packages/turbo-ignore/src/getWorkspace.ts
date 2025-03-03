@@ -25,12 +25,12 @@ export function getWorkspace(args: TurboIgnoreOptions): string | null {
     }
 
     info(
-      `Inferred "${packageJsonContent.name}" as workspace from "package.json"`
+      `Inferred "${packageJsonContent.name}" as workspace from "package.json"`,
     );
     return packageJsonContent.name;
   } catch (e) {
     error(
-      `"${packageJsonPath}" could not be found. turbo-ignore inferencing failed`
+      `"${packageJsonPath}" could not be found. turbo-ignore inferencing failed`,
     );
     return null;
   }

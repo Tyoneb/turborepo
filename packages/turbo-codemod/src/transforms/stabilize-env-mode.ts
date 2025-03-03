@@ -123,7 +123,7 @@ export function transformer({
   }
 
   log.info(
-    "Rewriting `experimentalPassThroughEnv` and `experimentalGlobalPassThroughEnv`"
+    "Rewriting `experimentalPassThroughEnv` and `experimentalGlobalPassThroughEnv`",
   );
   const turboConfigPath = path.join(root, "turbo.json");
   if (!fs.existsSync(turboConfigPath)) {

@@ -21,7 +21,7 @@ test("produces installable archive", async () => {
   await mkdir(path.join(tempDir, platformPath));
   await writeFile(
     path.join(tempDir, platformPath, "turbo"),
-    "#!/bin/bash\necho Invoked fake turbo!"
+    "#!/bin/bash\necho Invoked fake turbo!",
   );
 
   const tarPath = await operations.packPlatform({
@@ -39,7 +39,7 @@ test("produces installable archive", async () => {
     JSON.stringify({
       name: "fake-repo",
       scripts: { "test-turbo-install": "turbo" },
-    })
+    }),
   );
   execSync(`npm install ${tarPath}`, { cwd: fakeRepo });
   const output = execSync("npm run test-turbo-install", {
@@ -49,6 +49,6 @@ test("produces installable archive", async () => {
   });
   assert.equal(
     output,
-    "\n> test-turbo-install\n> turbo\n\nInvoked fake turbo!\n"
+    "\n> test-turbo-install\n> turbo\n\nInvoked fake turbo!\n",
   );
 });

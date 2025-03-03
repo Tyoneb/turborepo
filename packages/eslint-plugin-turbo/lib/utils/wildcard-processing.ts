@@ -26,7 +26,7 @@ function wildcardToRegexPattern(pattern: string): string {
 
         // Replace the trailing "\*" with just "*" before adding the segment.
         regexString.push(
-          escapeRegExp(`${pattern.slice(previousIndex, i - 1)}*`)
+          escapeRegExp(`${pattern.slice(previousIndex, i - 1)}*`),
         );
       } else {
         // Found a wildcard
@@ -69,7 +69,7 @@ export interface WildcardTests {
 
 // wildcardTests returns a WildcardSet after processing wildcards against it.
 export function wildcardTests(
-  wildcardPatterns: Array<EnvWildcard>
+  wildcardPatterns: Array<EnvWildcard>,
 ): WildcardTests {
   const includePatterns: Array<string> = [];
   const excludePatterns: Array<string> = [];

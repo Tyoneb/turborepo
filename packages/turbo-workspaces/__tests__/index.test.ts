@@ -51,7 +51,7 @@ describe("Node entrypoint", () => {
 
         if (fixtureManager === toManager) {
           await expect(convertWrapper()).rejects.toThrowError(
-            "You are already using this package manager"
+            "You are already using this package manager",
           );
         } else {
           await expect(convertWrapper()).resolves.toBeUndefined();
@@ -72,7 +72,7 @@ describe("Node entrypoint", () => {
         }
 
         mockedGetAvailablePackageManagers.mockRestore();
-      }
+      },
     );
   });
 });

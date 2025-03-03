@@ -106,6 +106,6 @@ function gitCommit(message: string) {
     `git commit --author="Turbobot <turbobot@vercel.com>" -am "${message}"`,
     {
       stdio: "ignore",
-    }
+    },
   );
 }

@@ -32,7 +32,7 @@ describe("managers", () => {
         });
 
         expect(detectResult).toEqual(result);
-      }
+      },
     );
   });
 
@@ -61,14 +61,14 @@ describe("managers", () => {
 
         if (dry) {
           expect(
-            await MANAGERS[project].detect({ workspaceRoot: root })
+            await MANAGERS[project].detect({ workspaceRoot: root }),
           ).toEqual(true);
         } else {
           expect(
-            await MANAGERS[manager].detect({ workspaceRoot: root })
+            await MANAGERS[manager].detect({ workspaceRoot: root }),
           ).toEqual(true);
         }
-      }
+      },
     );
   });
 
@@ -113,24 +113,24 @@ describe("managers", () => {
         if (dry) {
           expect(packageJson?.packageManager).toBeDefined();
           expect(packageJson?.packageManager?.split("@")[0]).toEqual(
-            fixtureManager
+            fixtureManager,
           );
           if (fixtureType === "monorepo") {
             if (fixtureManager === "pnpm") {
               expect(project.paths.workspaceConfig).toBeDefined();
               if (project.paths.workspaceConfig) {
                 const workspaceConfig = readYaml<{ packages: Array<string> }>(
-                  project.paths.workspaceConfig
+                  project.paths.workspaceConfig,
                 );
                 expect(workspaceConfig?.packages).toBeDefined();
                 expect(workspaceConfig?.packages).toEqual(
-                  project.workspaceData.globs
+                  project.workspaceData.globs,
                 );
               }
             } else {
               expect(packageJson?.workspaces).toBeDefined();
               expect(packageJson?.workspaces).toEqual(
-                project.workspaceData.globs
+                project.workspaceData.globs,
               );
             }
           }
@@ -143,14 +143,14 @@ describe("managers", () => {
               expect(project.paths.workspaceConfig).toBeDefined();
               if (project.paths.workspaceConfig) {
                 const workspaceConfig = readYaml<{ packages: Array<string> }>(
-                  project.paths.workspaceConfig
+                  project.paths.workspaceConfig,
                 );
                 expect(workspaceConfig).toBeUndefined();
               }
             }
           }
         }
-      }
+      },
     );
   });
 
@@ -181,14 +181,14 @@ describe("managers", () => {
         });
 
         expect(project.name).toEqual(
-          fixtureType === "monorepo" ? `${toManager}-workspaces` : toManager
+          fixtureType === "monorepo" ? `${toManager}-workspaces` : toManager,
         );
         expect(project.packageManager).toEqual(toManager);
 
         // paths
         expect(project.paths.root).toMatch(new RegExp(`^.*/${directoryName}$`));
         expect(project.paths.packageJson).toMatch(
-          new RegExp(`^.*/${directoryName}/package.json$`)
+          new RegExp(`^.*/${directoryName}/package.json$`),
         );
 
         if (fixtureManager === "pnpm") {
@@ -214,15 +214,15 @@ describe("managers", () => {
               : "packages";
             expect(workspace.paths.packageJson).toMatch(
               new RegExp(
-                `^.*${directoryName}/${type}/${workspace.name}/package.json$`
-              )
+                `^.*${directoryName}/${type}/${workspace.name}/package.json$`,
+              ),
             );
             expect(workspace.paths.root).toMatch(
-              new RegExp(`^.*${directoryName}/${type}/${workspace.name}$`)
+              new RegExp(`^.*${directoryName}/${type}/${workspace.name}$`),
             );
           });
         }
-      }
+      },
     );
   });
 
@@ -263,14 +263,14 @@ describe("managers", () => {
         });
 
         expect(project.name).toEqual(
-          fixtureType === "monorepo" ? `${toManager}-workspaces` : toManager
+          fixtureType === "monorepo" ? `${toManager}-workspaces` : toManager,
         );
         expect(project.packageManager).toEqual(toManager);
 
         // paths
         expect(project.paths.root).toMatch(new RegExp(`^.*/${directoryName}$`));
         expect(project.paths.packageJson).toMatch(
-          new RegExp(`^.*/${directoryName}/package.json$`)
+          new RegExp(`^.*/${directoryName}/package.json$`),
         );
 
         if (fixtureManager === "pnpm") {
@@ -296,15 +296,15 @@ describe("managers", () => {
               : "packages";
             expect(workspace.paths.packageJson).toMatch(
               new RegExp(
-                `^.*${directoryName}/${type}/${workspace.name}/package.json$`
-              )
+                `^.*${directoryName}/${type}/${workspace.name}/package.json$`,
+              ),
             );
             expect(workspace.paths.root).toMatch(
-              new RegExp(`^.*${directoryName}/${type}/${workspace.name}$`)
+              new RegExp(`^.*${directoryName}/${type}/${workspace.name}$`),
             );
           });
         }
-      }
+      },
     );
   });
 
@@ -332,7 +332,7 @@ describe("managers", () => {
         });
 
         expect(fs.existsSync(project.paths.lockfile)).toEqual(dry);
-      }
+      },
     );
   });
 
@@ -365,7 +365,7 @@ describe("managers", () => {
         } else {
           expect(exists(project.paths.lockfile)).toEqual(true);
         }
-      }
+      },
     );
   });
 });

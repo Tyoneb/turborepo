@@ -281,7 +281,7 @@ export const isRootSchemaV1 = (schema: SchemaV1): schema is RootSchemaV1 =>
   !("extends" in schema);
 
 export const isWorkspaceSchemaV1 = (
-  schema: SchemaV1
+  schema: SchemaV1,
 ): schema is WorkspaceSchemaV1 => !isRootSchemaV1(schema);
 
 export type SchemaV1 = WorkspaceSchemaV1 | RootSchemaV1;

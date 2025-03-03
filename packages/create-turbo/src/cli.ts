@@ -39,7 +39,7 @@ createTurboCli
     });
     // inject telemetry into the action as an option
     thisAction.addOption(
-      new Option("--telemetry").default(telemetry).hideHelp()
+      new Option("--telemetry").default(telemetry).hideHelp(),
     );
     telemetryClient = telemetry;
   })
@@ -51,22 +51,22 @@ createTurboCli
   .addOption(
     new Option(
       "-m, --package-manager <package-manager>",
-      "Specify the package manager to use"
-    ).choices(["npm", "yarn", "pnpm", "bun"])
+      "Specify the package manager to use",
+    ).choices(["npm", "yarn", "pnpm", "bun"]),
   )
   .option(
     "--skip-install",
     "Do not run a package manager install after creating the project",
-    false
+    false,
   )
   .option(
     "--skip-transforms",
     "Do not run any code transformation after creating the project",
-    false
+    false,
   )
   .option(
     "--turbo-version <version>",
-    "Use a specific version of turbo (default: latest)"
+    "Use a specific version of turbo (default: latest)",
   )
   .option(
     "-e, --example <name>|<github-url>",
@@ -74,7 +74,7 @@ createTurboCli
   An example to bootstrap the app with. You can use an example name
   from the official Turborepo repo or a GitHub URL. The URL can use
   any branch and/or subdirectory
-`
+`,
   )
   .option(
     "-p, --example-path <path-to-example>",
@@ -83,7 +83,7 @@ createTurboCli
   a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar).
   In this case, you must specify the path to the example separately:
   --example-path foo/bar
-`
+`,
   )
   .version(cliPkg.version, "-v, --version", "Output the current version")
   .helpOption("-h, --help", "Display help for command")

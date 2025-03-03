@@ -112,13 +112,13 @@ export default nextJsConfig;
 Additionally, you can add configuration specific to the package like this:
 
 ```js title="./apps/web/eslint.config.js"
-import { nextJsConfig } from "@repo/eslint-config/next-js";
+import { nextJsConfig } from '@repo/eslint-config/next-js';
 
 /** @type {import("eslint").Linter.Config} */
 export default [
   ...nextJsConfig,
   // Other configurations
-]
+];
 ```
 
 ## ESLint v8 (Legacy)

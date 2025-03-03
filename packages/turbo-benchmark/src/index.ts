@@ -26,14 +26,14 @@ const DEFAULT_CACHE_PATH = path.join(
   REPO_PATH,
   "node_modules",
   ".cache",
-  "turbo"
+  "turbo",
 );
 
 const ALT_CACHE_PATH = path.join(
   REPO_PATH,
   "node_modules",
   ".cache",
-  "turbo-benchmark"
+  "turbo-benchmark",
 );
 
 type Timing = number;
@@ -128,7 +128,7 @@ function cachedBuildWithDelta(): Array<Timing> {
     "src",
     "lib",
     "important-component-0",
-    "important-component-0.tsx"
+    "important-component-0.tsx",
   );
   const contents = readFileSync(file).toString("utf-8");
   // make a small edit
@@ -182,7 +182,7 @@ class Benchmarks {
     private readonly tinybirdFile: string,
     private readonly commitSha: string,
     private readonly commitTimestamp: Date,
-    private readonly platform: string
+    private readonly platform: string,
   ) {}
 
   run(name: string, b: () => Array<Timing>) {
@@ -236,13 +236,13 @@ const benchmark = new Benchmarks(
   "tinybird.ndjson",
   commitSha,
   commitTimestamp,
-  platform
+  platform,
 );
 benchmark.run("Clean Build", cleanBuild);
 benchmark.run("Cached Build - No Change", cachedBuild);
 benchmark.run("Cached Build - Code Change", cachedBuildWithDelta);
 benchmark.run(
   "Cached Build - Dependency Change",
-  cachedBuildWithDependencyChange
+  cachedBuildWithDependencyChange,
 );
 benchmark.flush();

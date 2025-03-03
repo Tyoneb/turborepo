@@ -17,7 +17,7 @@ async function getPackageDetails({ packageName }: { packageName: string }) {
 
   try {
     const result = await axios.get<PackageDetailsResponse>(
-      `${registry}/${packageName}`
+      `${registry}/${packageName}`,
     );
     return result.data;
   } catch (err) {

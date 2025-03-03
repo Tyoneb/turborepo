@@ -71,7 +71,7 @@ export class TelemetryClient {
             "x-turbo-session-id": this.sessionId,
             "User-Agent": utils.buildUserAgent(this.packageInfo),
           },
-        })
+        }),
       );
     }
   }

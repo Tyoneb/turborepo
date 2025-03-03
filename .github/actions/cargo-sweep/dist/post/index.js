@@ -17,7 +17,7 @@ async function runSweep(...args) {
 
 async function storeTimestamp() {
   await core.group("Storing timestamp to compare later", () =>
-    runSweep("--stamp")
+    runSweep("--stamp"),
   );
 
   core.info("Timestamp stored in `sweep.timestamp`");

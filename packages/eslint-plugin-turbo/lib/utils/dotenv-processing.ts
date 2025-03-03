@@ -9,7 +9,7 @@ interface DotEnvConfig {
 
 export function dotEnv(
   workspacePath: string | undefined,
-  config: DotEnvConfig
+  config: DotEnvConfig,
 ): Set<string> {
   if (!workspacePath) {
     return new Set();
@@ -20,10 +20,10 @@ export function dotEnv(
     try {
       const dotEnvFileContents = fs.readFileSync(
         path.join(workspacePath, filePath),
-        "utf8"
+        "utf8",
       );
       Object.keys(parse(dotEnvFileContents)).forEach((envVarName) =>
-        outputSet.add(envVarName)
+        outputSet.add(envVarName),
       );
     } catch (_) {
       // ignore

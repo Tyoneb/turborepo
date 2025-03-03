@@ -22,7 +22,7 @@ export async function transform(args: TransformInput): TransformResult {
       VSCODE_ESLINT_CONFIG,
       {
         spaces: 2,
-      }
+      },
     );
   } else {
     return { result: "not-applicable", ...meta };

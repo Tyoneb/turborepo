@@ -14,7 +14,7 @@ export function loadTransformers(): Array<Transformer> {
     .map((transformerFilename) => {
       const transformerPath = path.join(
         transformerDirectory,
-        transformerFilename
+        transformerFilename,
       );
       try {
         // eslint-disable-next-line @typescript-eslint/no-var-requires -- dynamic import

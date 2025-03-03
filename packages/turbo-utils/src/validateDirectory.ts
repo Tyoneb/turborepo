@@ -20,7 +20,7 @@ export function validateDirectory(directory: string): {
       root,
       projectName,
       error: `${picocolors.dim(
-        projectName
+        projectName,
       )} is not a directory - please try a different location`,
     };
   }

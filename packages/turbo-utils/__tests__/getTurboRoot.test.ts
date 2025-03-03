@@ -15,7 +15,7 @@ describe("getTurboConfigs", () => {
       const { root } = useFixture({ fixture: `single-package` });
       const turboRoot = getTurboRoot(path.join(root, repoPath));
       expect(turboRoot).toEqual(root);
-    }
+    },
   );
 
   it.each([

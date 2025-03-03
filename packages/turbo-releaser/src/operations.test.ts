@@ -44,7 +44,7 @@ describe("packPlatform", () => {
     const mockGenerateNativePackage = mock.fn();
     const mockMkdir = mock.fn();
     const mockCopyFile = mock.fn((_src: string, _dst: string) =>
-      Promise.resolve()
+      Promise.resolve(),
     );
     const mockStat = mock.fn(() => Promise.resolve({ mode: 0 }));
     const mockChmod = mock.fn();
@@ -64,11 +64,11 @@ describe("packPlatform", () => {
 
     assert.ok(
       mockCopyFile.mock.calls[0].arguments[0].endsWith("turbo.exe"),
-      "source ends with .exe"
+      "source ends with .exe",
     );
     assert.ok(
       mockCopyFile.mock.calls[0].arguments[1].endsWith("turbo.exe"),
-      "destination ends with .exe"
+      "destination ends with .exe",
     );
     assert.equal(mockGenerateNativePackage.mock.calls.length, 1);
     assert.equal(mockMkdir.mock.calls.length, 1);

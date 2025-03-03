@@ -36,12 +36,12 @@ function getPackageJson({
           `failed to parse "package.json" at ${workspaceRoot}`,
           {
             type: "package_json-parse_error",
-          }
+          },
         );
       }
     }
     throw new Error(
-      `unexpected error reading "package.json" at ${workspaceRoot}`
+      `unexpected error reading "package.json" at ${workspaceRoot}`,
     );
   }
 }

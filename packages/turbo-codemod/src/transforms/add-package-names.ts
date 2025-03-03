@@ -15,7 +15,7 @@ interface PartialPackageJson {
 }
 
 async function readPkgJson(
-  pkgJsonPath: string
+  pkgJsonPath: string,
 ): Promise<PartialPackageJson | null> {
   try {
     return (await fs.readJson(pkgJsonPath)) as { name?: string };
@@ -84,13 +84,13 @@ export async function transformer({
   // await, and then zip the paths and promise results together
   const packageContent = await Promise.all(packagePromises);
   const packageToContent = Object.fromEntries(
-    packagePaths.map((pkgJsonPath, idx) => [pkgJsonPath, packageContent[idx]])
+    packagePaths.map((pkgJsonPath, idx) => [pkgJsonPath, packageContent[idx]]),
   );
 
   // wait for all package.json files to be read
   const names = new Set();
   for (const [pkgJsonPath, pkgJsonContent] of Object.entries(
-    packageToContent
+    packageToContent,
   )) {
     if (pkgJsonContent) {
       // name is missing or isn't unique

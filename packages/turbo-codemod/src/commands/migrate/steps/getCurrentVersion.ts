@@ -4,7 +4,7 @@ import type { MigrateCommandOptions } from "../types";
 
 export function getCurrentVersion(
   project: Project,
-  opts: MigrateCommandOptions
+  opts: MigrateCommandOptions,
 ): string | undefined {
   const { from } = opts;
   if (from) {

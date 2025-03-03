@@ -43,7 +43,7 @@ packageGraph.forEachNode((node) => {
         node.data.dependencies[depNode.data.name] = `^${depNode.data.version}`;
         node.data.implicitDependencies = node.data.implicitDependencies || [];
         node.data.implicitDependencies.push(
-          depNode.data.name.replace(/^@[^/]+\//, "")
+          depNode.data.name.replace(/^@[^/]+\//, ""),
         );
       }
     }
@@ -67,7 +67,7 @@ dist
 out
 turbo
 turbo-linux
-.yalc`
+.yalc`,
     );
     if (fs.existsSync(root)) {
       try {
@@ -98,8 +98,8 @@ turbo-linux
           packageManager: "yarn@1.22.17",
         },
         null,
-        2
-      )
+        2,
+      ),
     );
 
     fs.writeFileSync(
@@ -127,8 +127,8 @@ turbo-linux
           },
         },
         null,
-        2
-      )
+        2,
+      ),
     );
   }
 
@@ -156,8 +156,8 @@ turbo-linux
           },
         },
         null,
-        2
-      )
+        2,
+      ),
     );
   }
 
@@ -170,8 +170,8 @@ turbo-linux
           version: "0.0.0",
         },
         null,
-        2
-      )
+        2,
+      ),
     );
   }
 
@@ -193,7 +193,7 @@ module.exports = {
     outputGlob: ['dist/**'],
   },
 };
-    `
+    `,
     );
   }
 
@@ -203,8 +203,8 @@ module.exports = {
     shelljs.exec(
       `cd ${path.join(
         __dirname,
-        "../demo"
-      )} && yarn create nx-workspace nx --preset=empty --nx-cloud=false --packageManager=yarn --cli=nx --linter=eslint`
+        "../demo",
+      )} && yarn create nx-workspace nx --preset=empty --nx-cloud=false --packageManager=yarn --cli=nx --linter=eslint`,
     );
     shelljs.exec(`cd ${root} && yarn add @nrwl/node`);
   }
@@ -214,7 +214,7 @@ module.exports = {
       const packageRoot = path.join(
         root,
         "packages",
-        node.data.name.replace(/^@[^/]+\//, "")
+        node.data.name.replace(/^@[^/]+\//, ""),
       );
       fs.mkdirSync(packageRoot, { recursive: true });
       copy(
@@ -223,7 +223,7 @@ module.exports = {
         {
           name: node.data.name.replace(/^@[^/]+\//, ""),
         },
-        () => {}
+        () => {},
       );
 
       fs.writeFileSync(
@@ -249,8 +249,8 @@ module.exports = {
             },
           },
           null,
-          2
-        )
+          2,
+        ),
       );
     });
   }
@@ -260,8 +260,8 @@ module.exports = {
       shelljs.exec(
         `cd ${root} && yarn nx g @nrwl/node:library --buildable --publishable --name="${node.data.name.replace(
           /^@[^/]+\//,
-          ""
-        )}" --importPath="${node.data.name.replace(/^@[^/]+\//, "")}"`
+          "",
+        )}" --importPath="${node.data.name.replace(/^@[^/]+\//, "")}"`,
       );
       // instead of dealing with actual code, just list as implicitDependencies
       const safeName = node.data.name.replace(/^@[^/]+\//, "");
@@ -272,7 +272,7 @@ module.exports = {
       };
       fs.writeFileSync(
         path.join(root, "nx.json"),
-        JSON.stringify(workspace, null, 2)
+        JSON.stringify(workspace, null, 2),
       );
     });
   }
@@ -286,10 +286,10 @@ module.exports = {
 [user]
 	name = GitHub Actions
 	email = actions@users.noreply.github.com
-`
+`,
   );
   shelljs.exec(
-    `cd ${root} && git init -q && git add . && git commit -m "init"`
+    `cd ${root} && git init -q && git add . && git commit -m "init"`,
   );
 }
 

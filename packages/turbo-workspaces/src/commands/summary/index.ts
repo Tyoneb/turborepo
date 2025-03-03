@@ -55,7 +55,7 @@ export async function summaryCommand(directory: SummaryCommandArgument) {
 
   const renderWorkspace = (w: Workspace) => {
     return `${w.name} (${picocolors.italic(
-      `./${path.relative(root, w.paths.root)}`
+      `./${path.relative(root, w.paths.root)}`,
     )})`;
   };
 
@@ -81,14 +81,14 @@ export async function summaryCommand(directory: SummaryCommandArgument) {
   logger.indented(
     1,
     `Package Manager: ${picocolors.bold(
-      picocolors.italic(project.packageManager)
-    )}`
+      picocolors.italic(project.packageManager),
+    )}`,
   );
   if (hasWorkspaces) {
     // workspaces header
     logger.indented(
       1,
-      `Workspaces (${picocolors.bold(numWorkspaces.toString())}):`
+      `Workspaces (${picocolors.bold(numWorkspaces.toString())}):`,
     );
     Object.keys(workspacesByDirectory).forEach((dir, idx) => {
       renderDirectory({

@@ -44,7 +44,7 @@ interface ProjectTests {
 // Process inputs for `EnvironmentConfig`s
 
 function processLegacyConfig(
-  legacyConfig: Array<string> | undefined
+  legacyConfig: Array<string> | undefined,
 ): Array<string> {
   if (!legacyConfig) {
     return [];
@@ -83,7 +83,7 @@ function processEnv(env: Array<string> | undefined): Array<string> {
 }
 
 function processPassThroughEnv(
-  passThroughEnv: Array<string> | null | undefined
+  passThroughEnv: Array<string> | null | undefined,
 ): Array<string> | null {
   if (!passThroughEnv) {
     return null;
@@ -101,7 +101,7 @@ function processPassThroughEnv(
 
 function processDotEnv(
   workspacePath: string,
-  filePaths: Array<string> | null | undefined
+  filePaths: Array<string> | null | undefined,
 ): DotEnvConfig | null {
   if (!filePaths) {
     return null;
@@ -131,7 +131,7 @@ function processDotEnv(
 
 function processGlobal(
   workspacePath: string,
-  schema: RootSchemaV1 | RootSchemaV2
+  schema: RootSchemaV1 | RootSchemaV2,
 ): EnvironmentConfig {
   return {
     legacyConfig: processLegacyConfig(schema.globalDependencies),
@@ -139,14 +139,14 @@ function processGlobal(
     passThroughEnv: processPassThroughEnv(schema.globalPassThroughEnv),
     dotEnv: processDotEnv(
       workspacePath,
-      "globalDotEnv" in schema ? schema.globalDotEnv : undefined
+      "globalDotEnv" in schema ? schema.globalDotEnv : undefined,
     ),
   };
 }
 
 function processTask(
   workspacePath: string,
-  task: PipelineV1
+  task: PipelineV1,
 ): EnvironmentConfig {
   return {
     legacyConfig: processLegacyConfig(task.dependsOn),
@@ -159,7 +159,7 @@ function processTask(
 const TEST_FALSE = (_: string): boolean => false;
 function generateEnvironmentTest(
   config: EnvironmentConfig,
-  workspacePath: string | undefined
+  workspacePath: string | undefined,
 ): EnvironmentTest {
   const output: EnvironmentTest = {
     legacyConfig: TEST_FALSE,
@@ -248,11 +248,11 @@ function getTaskAddress(taskName: string): {
 
 export function getWorkspaceFromFilePath(
   projectWorkspaces: Array<WorkspaceConfig>,
-  filePath: string
+  filePath: string,
 ): WorkspaceConfig | null {
   const possibleWorkspaces = projectWorkspaces
     .filter((projectWorkspace) =>
-      filePath.startsWith(projectWorkspace.workspacePath)
+      filePath.startsWith(projectWorkspace.workspacePath),
     )
     .sort((a, b) => {
       if (a.workspacePath > b.workspacePath) {
@@ -285,10 +285,10 @@ export class Project {
     this.cwd = cwd;
     this.allConfigs = getWorkspaceConfigs(cwd);
     this.projectRoot = this.allConfigs.find(
-      (workspaceConfig) => workspaceConfig.isWorkspaceRoot
+      (workspaceConfig) => workspaceConfig.isWorkspaceRoot,
     );
     this.projectWorkspaces = this.allConfigs.filter(
-      (workspaceConfig) => !workspaceConfig.isWorkspaceRoot
+      (workspaceConfig) => !workspaceConfig.isWorkspaceRoot,
     );
 
     this._key = this.generateKey();
@@ -317,7 +317,7 @@ export class Project {
 
       global = processGlobal(
         this.projectRoot.workspacePath,
-        this.projectRoot.turboConfig
+        this.projectRoot.turboConfig,
       );
 
       forEachTaskDef(
@@ -331,15 +331,15 @@ export class Project {
                 : {};
             workspaceTasks[workspaceName][scriptName] = processTask(
               rootTurboJson.workspacePath,
-              taskDefinition
+              taskDefinition,
             );
           } else {
             globalTasks[scriptName] = processTask(
               rootTurboJson.workspacePath,
-              taskDefinition
+              taskDefinition,
             );
           }
-        }
+        },
       );
     }
 
@@ -355,7 +355,7 @@ export class Project {
             getTaskAddress(taskName);
           if (erroneousWorkspaceName) {
             throw new Error(
-              "May not specify workspace name in non-root turbo.json"
+              "May not specify workspace name in non-root turbo.json",
             );
           }
 
@@ -366,9 +366,9 @@ export class Project {
               : {};
           workspaceTasks[workspaceName][scriptName] = processTask(
             projectWorkspace.workspacePath,
-            taskDefinition
+            taskDefinition,
           );
-        }
+        },
       );
     });
 
@@ -381,7 +381,7 @@ export class Project {
 
   getWorkspacePath(workspaceName: string): string | undefined {
     return this.projectWorkspaces.find(
-      (workspaceConfig) => workspaceConfig.workspaceName === workspaceName
+      (workspaceConfig) => workspaceConfig.workspaceName === workspaceName,
     )?.workspacePath;
   }
 
@@ -389,7 +389,7 @@ export class Project {
     return {
       global: generateEnvironmentTest(
         this._key.global,
-        this.projectRoot?.workspacePath
+        this.projectRoot?.workspacePath,
       ),
       globalTasks: Object.fromEntries(
         Object.entries(this._key.globalTasks).map(([script, config]) => {
@@ -397,7 +397,7 @@ export class Project {
             script,
             generateEnvironmentTest(config, this.projectRoot?.workspacePath),
           ];
-        })
+        }),
       ),
       workspaceTasks: Object.fromEntries(
         Object.entries(this._key.workspaceTasks).map(
@@ -411,11 +411,11 @@ export class Project {
                     script,
                     generateEnvironmentTest(config, workspacePath),
                   ];
-                })
+                }),
               ),
             ];
-          }
-        )
+          },
+        ),
       ),
     };
   }
@@ -428,15 +428,15 @@ export class Project {
     const tests = [
       environmentTestArray(this._test.global),
       ...Object.values(this._test.globalTasks).map((context) =>
-        environmentTestArray(context)
+        environmentTestArray(context),
       ),
     ];
 
     if (workspaceName && workspaceName in this._test.workspaceTasks) {
       tests.push(
         ...Object.values(this._test.workspaceTasks[workspaceName]).map(
-          (context) => environmentTestArray(context)
-        )
+          (context) => environmentTestArray(context),
+        ),
       );
     }
 

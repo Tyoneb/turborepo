@@ -9,7 +9,7 @@ const ruleTester = new RuleTester({
 
 const cwd = path.join(
   __dirname,
-  "../../../../__fixtures__/framework-inference"
+  "../../../../__fixtures__/framework-inference",
 );
 const nextJsFilename = path.join(cwd, "/apps/nextjs/index.js");
 const viteFilename = path.join(cwd, "/apps/vite/index.js");

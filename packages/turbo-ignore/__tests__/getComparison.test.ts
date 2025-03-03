@@ -29,7 +29,7 @@ describe("getComparison()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      "Falling back to ref HEAD^2"
+      "Falling back to ref HEAD^2",
     );
   });
 
@@ -41,7 +41,7 @@ describe("getComparison()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'No previous deployments found for "test-workspace" on branch "my-branch"'
+      'No previous deployments found for "test-workspace" on branch "my-branch"',
     );
   });
 
@@ -100,7 +100,7 @@ describe("getComparison()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Found previous deployment ("mygitsha") for "test-workspace" on branch "my-branch"'
+      'Found previous deployment ("mygitsha") for "test-workspace" on branch "my-branch"',
     );
 
     mockExec.mockRestore();
@@ -150,7 +150,7 @@ describe("getComparison()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Previous deployment ("mygitsha") for "test-workspace" on branch "my-branch" is unreachable.'
+      'Previous deployment ("mygitsha") for "test-workspace" on branch "my-branch" is unreachable.',
     );
 
     mockExec.mockRestore();
@@ -174,7 +174,7 @@ describe("getComparison()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Found previous deployment ("mygitsha") for "test-workspace"'
+      'Found previous deployment ("mygitsha") for "test-workspace"',
     );
 
     mockExec.mockRestore();
@@ -194,7 +194,7 @@ describe("getComparison()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Previous deployment ("mygitsha") for "test-workspace" is unreachable.'
+      'Previous deployment ("mygitsha") for "test-workspace" is unreachable.',
     );
 
     mockExec.mockRestore();

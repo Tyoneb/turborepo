@@ -25,6 +25,6 @@ describe("getNewPkgName", () => {
     ({ pkgPath, pkgName, expected }) => {
       const newName = getNewPkgName({ pkgPath, pkgName });
       expect(newName).toBe(expected);
-    }
+    },
   );
 });

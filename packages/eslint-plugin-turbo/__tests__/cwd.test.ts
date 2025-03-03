@@ -83,7 +83,7 @@ describe("eslint settings check", () => {
         cwd,
         encoding: "utf8",
         env,
-      }
+      },
     );
     const configJson: Record<string, unknown> = parse(configString);
 
@@ -155,7 +155,7 @@ describe("eslint cache is busted", () => {
       });
     } catch (error: unknown) {
       const outputJson: Record<string, unknown> = parse(
-        (error as { stdout: string }).stdout
+        (error as { stdout: string }).stdout,
       );
       expect(outputJson).toMatchObject([
         {

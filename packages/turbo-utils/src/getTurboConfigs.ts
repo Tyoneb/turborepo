@@ -46,13 +46,13 @@ function getWorkspaceGlobs(root: string): Array<string> {
   try {
     if (fs.existsSync(path.join(root, "pnpm-workspace.yaml"))) {
       const workspaceConfig = yaml.load(
-        fs.readFileSync(path.join(root, "pnpm-workspace.yaml"), "utf8")
+        fs.readFileSync(path.join(root, "pnpm-workspace.yaml"), "utf8"),
       ) as PNPMWorkspaceConfig;
 
       return workspaceConfig.packages || [];
     }
     const packageJson = JSON.parse(
-      fs.readFileSync(path.join(root, "package.json"), "utf8")
+      fs.readFileSync(path.join(root, "package.json"), "utf8"),
     ) as PackageJson;
     if (packageJson.workspaces) {
       // support nested packages workspace format
@@ -83,7 +83,7 @@ export function getTurboConfigs(cwd?: string, opts?: Options): TurboConfigs {
   if (turboRoot) {
     const workspaceGlobs = getWorkspaceGlobs(turboRoot);
     const workspaceConfigGlobs = workspaceGlobs.map(
-      (glob) => `${glob}/turbo.json`
+      (glob) => `${glob}/turbo.json`,
     );
 
     const configPaths = sync([ROOT_GLOB, ...workspaceConfigGlobs], {
@@ -132,7 +132,7 @@ export function getTurboConfigs(cwd?: string, opts?: Options): TurboConfigs {
 
 export function getWorkspaceConfigs(
   cwd?: string,
-  opts?: Options
+  opts?: Options,
 ): Array<WorkspaceConfig> {
   const turboRoot = getTurboRoot(cwd, opts);
   const configs: Array<WorkspaceConfig> = [];
@@ -146,7 +146,7 @@ export function getWorkspaceConfigs(
   if (turboRoot) {
     const workspaceGlobs = getWorkspaceGlobs(turboRoot);
     const workspaceConfigGlobs = workspaceGlobs.map(
-      (glob) => `${glob}/package.json`
+      (glob) => `${glob}/package.json`,
     );
 
     const configPaths = sync([ROOT_WORKSPACE_GLOB, ...workspaceConfigGlobs], {
@@ -214,8 +214,8 @@ export function getWorkspaceConfigs(
 export function forEachTaskDef<BaseSchema extends BaseSchemaV1 | BaseSchemaV2>(
   config: BaseSchema,
   f: (
-    value: [string, BaseSchema extends BaseSchemaV1 ? PipelineV1 : PipelineV2]
-  ) => void
+    value: [string, BaseSchema extends BaseSchemaV1 ? PipelineV1 : PipelineV2],
+  ) => void,
 ): void {
   if ("pipeline" in config) {
     Object.entries(config.pipeline).forEach(f);

@@ -17,7 +17,7 @@ export function hasLegacyEnvVarDependencies(config: SchemaV1) {
   const dependsOn = [
     "extends" in config ? [] : config.globalDependencies,
     Object.values(config.pipeline).flatMap(
-      (pipeline) => pipeline.dependsOn ?? []
+      (pipeline) => pipeline.dependsOn ?? [],
     ),
   ].flat();
   const envVars = dependsOn.filter((dep) => dep?.startsWith("$"));
@@ -118,7 +118,7 @@ export function transformer({
   });
 
   log.info(
-    `Migrating environment variable dependencies from "globalDependencies" and "dependsOn" to "env" in "turbo.json"...`
+    `Migrating environment variable dependencies from "globalDependencies" and "dependsOn" to "env" in "turbo.json"...`,
   );
 
   // validate we don't have a package.json config

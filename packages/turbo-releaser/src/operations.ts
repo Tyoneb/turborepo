@@ -53,7 +53,7 @@ async function packPlatform({
       file: tarPath,
       cwd: tarballDir,
     },
-    [npmDirName]
+    [npmDirName],
   );
 
   console.log(`Artifact created: ${tarPath}`);

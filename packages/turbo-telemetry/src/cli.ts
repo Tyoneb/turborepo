@@ -18,16 +18,16 @@ function status(options: TelemetryCLIOptions) {
       isEnabled
         ? picocolors.bold(picocolors.green("Enabled"))
         : picocolors.bold(picocolors.red("Disabled"))
-    }`
+    }`,
   );
   logger.log();
   if (isEnabled) {
     logger.log(
-      "Turborepo telemetry is completely anonymous. Thank you for participating!"
+      "Turborepo telemetry is completely anonymous. Thank you for participating!",
     );
   } else {
     logger.log(
-      "You have opted-out of Turborepo anonymous telemetry. No data will be collected from your machine."
+      "You have opted-out of Turborepo anonymous telemetry. No data will be collected from your machine.",
     );
   }
   logger.log("Learn more: https://turbo.build/repo/docs/telemetry");
@@ -61,7 +61,7 @@ export function withTelemetryCommand(command: Command) {
     .addArgument(
       new Argument("[action]", "Action to perform")
         .choices(CHOICES)
-        .default(DEFAULT_CHOICE)
+        .default(DEFAULT_CHOICE),
     )
     .action(telemetry);
 }

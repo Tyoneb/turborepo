@@ -95,12 +95,12 @@ describe("examples", () => {
 
         if (result && expectBranchLookup) {
           expect(mockGot).toHaveBeenCalledWith(
-            `https://api.github.com/repos/${result.username}/${result.name}`
+            `https://api.github.com/repos/${result.username}/${result.name}`,
           );
         }
 
         mockGot.mockRestore();
-      }
+      },
     );
   });
 
@@ -129,7 +129,7 @@ describe("examples", () => {
 
         expect(mockGot).toHaveBeenCalledWith(expectedUrl);
         mockGot.mockRestore();
-      }
+      },
     );
   });
 });

@@ -59,7 +59,7 @@ const meta: Rule.RuleMetaData = {
  */
 function normalizeCwd(
   cwd: string | undefined,
-  options: RuleContextWithOptions["options"]
+  options: RuleContextWithOptions["options"],
 ): string | undefined {
   if (options[0]?.cwd) {
     return options[0].cwd;
@@ -122,7 +122,7 @@ const frameworkEnvMatches = (filePath: string): Set<RegExp> => {
   debug(`found package.json in: ${packageJsonDir}`);
 
   const dependencies = packageJsonDependencies(
-    `${packageJsonDir}/package.json`
+    `${packageJsonDir}/package.json`,
   );
   const hasDependency = (dep: string) => dependencies.has(dep);
   debug(`dependencies for ${filePath}: ${Array.from(dependencies).join(",")}`);
@@ -133,7 +133,7 @@ const frameworkEnvMatches = (filePath: string): Set<RegExp> => {
       {
         dependencyMatch: { dependencies: searchDependencies, strategy },
         envWildcards,
-      }
+      },
     ) => {
       const hasMatch =
         strategy === "all"
@@ -148,7 +148,7 @@ const frameworkEnvMatches = (filePath: string): Set<RegExp> => {
       }
       return acc;
     },
-    new Set<RegExp>()
+    new Set<RegExp>(),
   );
 };
 
@@ -174,13 +174,13 @@ function create(context: RuleContextWithOptions): Rule.RuleListener {
   debug(
     `Allow list: ${regexAllowList.map((r) => r.source).join(",")}, ${
       regexAllowList.length
-    }`
+    }`,
   );
 
   const cwd = normalizeCwd(
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- needed to support older eslint versions
     context.getCwd ? context.getCwd() : undefined,
-    options
+    options,
   );
 
   const project = new Project(cwd);
@@ -190,11 +190,11 @@ function create(context: RuleContextWithOptions): Rule.RuleListener {
 
   const filePath = context.getPhysicalFilename();
   const hasWorkspaceConfigs = project.projectWorkspaces.some(
-    (workspaceConfig) => Boolean(workspaceConfig.turboConfig)
+    (workspaceConfig) => Boolean(workspaceConfig.turboConfig),
   );
   const workspaceConfig = getWorkspaceFromFilePath(
     project.projectWorkspaces,
-    filePath
+    filePath,
   );
 
   const checkKey = (node: Node, envKey?: string) => {
@@ -219,7 +219,7 @@ function create(context: RuleContextWithOptions): Rule.RuleListener {
         // if we have a cwd, we can provide a relative path to the workspace config
         message = `{{ envKey }} is not listed as a dependency in the root turbo.json or workspace (${path.relative(
           cwd,
-          workspaceConfig.workspacePath
+          workspaceConfig.workspacePath,
         )}) turbo.json`;
       } else {
         message = `{{ envKey }} is not listed as a dependency in the root turbo.json or workspace turbo.json`;
@@ -234,7 +234,7 @@ function create(context: RuleContextWithOptions): Rule.RuleListener {
   };
 
   const isComputed = (
-    node: MemberExpression & Rule.NodeParentExtension
+    node: MemberExpression & Rule.NodeParentExtension,
   ): boolean => {
     if ("computed" in node.parent) {
       return node.parent.computed;

@@ -46,7 +46,7 @@ describe("transform", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await transform("add-package-manager", root as MigrateCommandArgument, {
@@ -104,7 +104,7 @@ describe("transform", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await transform("add-package-manager", root, {

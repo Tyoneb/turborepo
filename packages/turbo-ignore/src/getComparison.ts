@@ -19,7 +19,7 @@ export function validateSHAExists(ref: string): boolean {
 }
 
 export function fallback(
-  args: GetComparisonArgs
+  args: GetComparisonArgs,
 ): { ref: string; type: "customFallback" } | null {
   if (args.fallback) {
     info(`Falling back to ref ${args.fallback}`);
@@ -45,7 +45,7 @@ export function getComparison(args: GetComparisonArgs): {
             process.env.VERCEL_GIT_COMMIT_REF
               ? ` on branch "${process.env.VERCEL_GIT_COMMIT_REF}"`
               : ""
-          }`
+          }`,
         );
         return {
           ref: process.env.VERCEL_GIT_PREVIOUS_SHA,
@@ -61,7 +61,7 @@ export function getComparison(args: GetComparisonArgs): {
           process.env.VERCEL_GIT_COMMIT_REF
             ? ` on branch "${process.env.VERCEL_GIT_COMMIT_REF}"`
             : ""
-        } is unreachable.`
+        } is unreachable.`,
       );
       return fallback(args);
     }
@@ -71,7 +71,7 @@ export function getComparison(args: GetComparisonArgs): {
         process.env.VERCEL_GIT_COMMIT_REF
           ? ` on branch "${process.env.VERCEL_GIT_COMMIT_REF}"`
           : ""
-      }`
+      }`,
     );
     return fallback(args);
   } else if (args.fallback) {

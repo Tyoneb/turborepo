@@ -41,7 +41,7 @@ async function generateNativePackage({
     console.log("Copying ", path.join(part, ...parts));
     await copyFile(
       path.join(templateDir, part, ...parts),
-      path.join(outputDir, part, ...parts)
+      path.join(outputDir, part, ...parts),
     );
   };
 
@@ -67,7 +67,7 @@ async function generateNativePackage({
   };
   await writeFile(
     path.join(outputDir, "package.json"),
-    JSON.stringify(packageJson, null, 2)
+    JSON.stringify(packageJson, null, 2),
   );
 
   console.log(`Native package generated successfully in ${outputDir}`);

@@ -50,7 +50,7 @@ Migration is done in 4 steps:
 **/
 export async function migrate(
   directory: MigrateCommandArgument,
-  options: MigrateCommandOptions
+  options: MigrateCommandOptions,
 ) {
   // check git status
   if (!options.dryRun) {
@@ -93,7 +93,7 @@ export async function migrate(
     return endMigration({
       success: false,
       message: `Directory (${picocolors.dim(
-        root
+        root,
       )}) does not appear to be a repository`,
     });
   }
@@ -105,7 +105,7 @@ export async function migrate(
     return endMigration({
       success: false,
       message: `Unable to read determine package manager details from ${picocolors.dim(
-        root
+        root,
       )}`,
     });
   }
@@ -145,7 +145,7 @@ export async function migrate(
     return endMigration({
       success: true,
       message: `Nothing to do, current version (${picocolors.bold(
-        fromVersion
+        fromVersion,
       )}) is the same as the requested version (${picocolors.bold(toVersion)})`,
     });
   }
@@ -155,7 +155,7 @@ export async function migrate(
   if (codemods.length === 0) {
     logger.log(
       `No codemods required to migrate from ${fromVersion} to ${toVersion}`,
-      os.EOL
+      os.EOL,
     );
   }
 
@@ -168,7 +168,7 @@ export async function migrate(
   // step 4
   logger.log(
     `Upgrading turbo from ${picocolors.bold(fromVersion)} to ${picocolors.bold(
-      toVersion
+      toVersion,
     )} (${
       codemods.length === 0
         ? "no codemods required"
@@ -176,15 +176,15 @@ export async function migrate(
             codemods.length === 1 ? "" : "s"
           }`
     })`,
-    os.EOL
+    os.EOL,
   );
 
   const results: Array<TransformerResults> = [];
   for (const [idx, codemod] of codemods.entries()) {
     logger.log(
       `(${idx + 1}/${codemods.length}) ${picocolors.bold(
-        `Running ${codemod.name}`
-      )}`
+        `Running ${codemod.name}`,
+      )}`,
     );
 
     // eslint-disable-next-line no-await-in-loop -- transforms have to run serially to avoid conflicts
@@ -199,7 +199,7 @@ export async function migrate(
   const hasTransformError = results.some(
     (result) =>
       result.fatalError ||
-      Object.keys(result.changes).some((key) => result.changes[key].error)
+      Object.keys(result.changes).some((key) => result.changes[key].error),
   );
 
   if (hasTransformError) {
@@ -230,14 +230,14 @@ export async function migrate(
     if (options.dryRun) {
       logger.log(
         `Upgrading turbo with ${picocolors.bold(
-          upgradeCommand
+          upgradeCommand,
         )} ${picocolors.dim("(dry run)")}`,
-        os.EOL
+        os.EOL,
       );
     } else {
       logger.log(
         `Upgrading turbo with ${picocolors.bold(upgradeCommand)}`,
-        os.EOL
+        os.EOL,
       );
       try {
         execSync(upgradeCommand, { stdio: "pipe", cwd: project.paths.root });

@@ -9,7 +9,7 @@ describe("getWorkspace()", () => {
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Using "build" as the task as it was unspecified'
+      'Using "build" as the task as it was unspecified',
     );
   });
 
@@ -17,13 +17,13 @@ describe("getWorkspace()", () => {
     expect(
       getTask({
         task: "workspace#task",
-      })
+      }),
     ).toEqual(`"workspace#task"`);
 
     expect(mockConsole.log).toHaveBeenNthCalledWith(
       1,
       "≫  ",
-      'Using "workspace#task" as the task from the arguments'
+      'Using "workspace#task" as the task from the arguments',
     );
   });
 });

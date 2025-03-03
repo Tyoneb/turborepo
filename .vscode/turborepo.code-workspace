@@ -2,10 +2,10 @@
   "folders": [
     {
       "name": "turbo",
-      "path": "../"
+      "path": "../",
     },
     {
-      "path": "../packages/eslint-plugin-turbo"
-    }
-  ]
+      "path": "../packages/eslint-plugin-turbo",
+    },
+  ],
 }

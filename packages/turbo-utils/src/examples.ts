@@ -26,10 +26,10 @@ export async function isUrlOk(url: string): Promise<boolean> {
 
 export async function getRepoInfo(
   url: URL,
-  examplePath?: string
+  examplePath?: string,
 ): Promise<RepoInfo | undefined> {
   const [, username, name, tree, sourceBranch, ...file] = url.pathname.split(
-    "/"
+    "/",
   ) as Array<string | undefined>;
   const filePath = examplePath
     ? examplePath.replace(/^\//, "")
@@ -46,7 +46,7 @@ export async function getRepoInfo(
   ) {
     try {
       const infoResponse = await got(
-        `https://api.github.com/repos/${username}/${name}`
+        `https://api.github.com/repos/${username}/${name}`,
       );
       const info = JSON.parse(infoResponse.body) as { default_branch: string };
       return {
@@ -64,7 +64,7 @@ export async function getRepoInfo(
   const branch = examplePath
     ? `${sourceBranch}/${file.join("/")}`.replace(
         new RegExp(`/${filePath}|/$`),
-        ""
+        "",
       )
     : sourceBranch;
 
@@ -92,8 +92,8 @@ export function existsInRepo(nameOrUrl: string): Promise<boolean> {
   } catch {
     return isUrlOk(
       `https://api.github.com/repos/vercel/turborepo/contents/examples/${encodeURIComponent(
-        nameOrUrl
-      )}`
+        nameOrUrl,
+      )}`,
     );
   }
 }
@@ -106,11 +106,11 @@ async function downloadTar(url: string, name: string) {
 
 export async function downloadAndExtractRepo(
   root: string,
-  { username, name, branch, filePath }: RepoInfo
+  { username, name, branch, filePath }: RepoInfo,
 ) {
   const tempFile = await downloadTar(
     `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`,
-    `turbo-ct-example`
+    `turbo-ct-example`,
   );
 
   let rootPath: string | null = null;
@@ -136,7 +136,7 @@ export async function downloadAndExtractRepo(
 export async function downloadAndExtractExample(root: string, name: string) {
   const tempFile = await downloadTar(
     `https://codeload.github.com/vercel/turborepo/tar.gz/main`,
-    `turbo-ct-example`
+    `turbo-ct-example`,
   );
 
   let rootPath: string | null = null;

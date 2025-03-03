@@ -16,8 +16,8 @@ export const TURBO_BIN = path.resolve(
     "..",
     "target",
     "release-turborepo",
-    `turbo${isWin ? ".exe" : ""}`
-  )
+    `turbo${isWin ? ".exe" : ""}`,
+  ),
 );
 
 export function setup(): void {
@@ -28,7 +28,7 @@ export function setup(): void {
       `cd ${REPO_ROOT} && git reset --hard HEAD && git clean -f -d -X`,
       {
         stdio: "inherit",
-      }
+      },
     );
   } else {
     cp.execSync(`git clone ${REPO_ORIGIN}`, { stdio: "ignore" });

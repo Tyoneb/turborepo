@@ -6,20 +6,20 @@
         "local": {
           "protocol": "http",
           "host": "localhost",
-          "port": 3331
+          "port": 3331,
         },
         "fallback": {
           "protocol": "https",
-          "host": "main-preview.sh"
-        }
+          "host": "main-preview.sh",
+        },
       },
       "production": {
         "protocol": "https",
-        "host": "main.com"
+        "host": "main.com",
       },
       "vercel": {
-        "projectId": "id1"
-      }
+        "projectId": "id1",
+      },
     },
     "vercel-marketing": {
       "routing": [
@@ -31,8 +31,8 @@
             "/press",
             "/changelog",
             "/changelog/:slug*",
-            "/customers/:slug*"
-          ]
+            "/customers/:slug*",
+          ],
         },
         {
           "group": "navbar",
@@ -43,74 +43,74 @@
             "/enterprise",
             // Resources
             "/customers",
-            "/solutions/composable-commerce"
-          ]
-        }
+            "/solutions/composable-commerce",
+          ],
+        },
       ],
       "development": {
         "local": {
           "protocol": "http",
           "host": "localhost",
-          "port": 3332
+          "port": 3332,
         },
         "fallback": {
           "protocol": "https",
-          "host": "market-preview.sh"
-        }
+          "host": "market-preview.sh",
+        },
       },
       "production": {
         "protocol": "https",
-        "host": "market.main.com"
+        "host": "market.main.com",
       },
       "vercel": {
-        "projectId": "id2"
-      }
+        "projectId": "id2",
+      },
     },
     "foo-docs": {
       "routing": [
         {
-          "paths": ["/foo/:path*"]
-        }
+          "paths": ["/foo/:path*"],
+        },
       ],
       "development": {
         "fallback": {
           "protocol": "https",
-          "host": "foo-preview.sh"
+          "host": "foo-preview.sh",
         },
         "local": {
           "protocol": "http",
           "host": "localhost",
-          "port": 3333
-        }
+          "port": 3333,
+        },
       },
       "production": {
         "protocol": "https",
-        "host": "foo.main.com"
+        "host": "foo.main.com",
       },
       "vercel": {
-        "projectId": "id3"
-      }
+        "projectId": "id3",
+      },
     },
     "docs": {
       "routing": [],
       "development": {
         "fallback": {
           "protocol": "https",
-          "host": "docs-preview.sh"
+          "host": "docs-preview.sh",
         },
         "local": {
           "protocol": "http",
           "host": "localhost",
-          "port": 3334
-        }
+          "port": 3334,
+        },
       },
       "production": {
         "protocol": "https",
-        "host": "docs.main.com"
+        "host": "docs.main.com",
       },
       "vercel": {
-        "projectId": "id4"
-      }
-    }
-  }
+        "projectId": "id4",
+      },
+    },
+  },
 }

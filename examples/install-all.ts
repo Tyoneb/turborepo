@@ -8,7 +8,7 @@ const examplesDir = path.resolve(__dirname);
 
 /** Get all directories in the examples folder */
 const exampleDirs = readdirSync(examplesDir).filter((dir) =>
-  existsSync(path.join(examplesDir, dir, "package.json"))
+  existsSync(path.join(examplesDir, dir, "package.json")),
 );
 
 exampleDirs.forEach((dir) => {

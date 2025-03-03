@@ -37,7 +37,7 @@ describe("git", () => {
         .spyOn(childProcess, "execSync")
         .mockImplementation(() => {
           throw new Error(
-            "fatal: not a git repository (or any of the parent directories): .git"
+            "fatal: not a git repository (or any of the parent directories): .git",
           );
         });
 
@@ -127,7 +127,7 @@ describe("git", () => {
         .spyOn(childProcess, "execSync")
         .mockImplementationOnce(() => {
           throw new Error(
-            "fatal: not a git repository (or any of the parent directories): .git"
+            "fatal: not a git repository (or any of the parent directories): .git",
           );
         })
         .mockImplementationOnce(() => {
@@ -183,7 +183,7 @@ describe("git", () => {
         .spyOn(childProcess, "execSync")
         .mockImplementationOnce(() => {
           throw new Error(
-            "fatal: not a git repository (or any of the parent directories): .git"
+            "fatal: not a git repository (or any of the parent directories): .git",
           );
         })
         .mockImplementationOnce(() => {
@@ -213,7 +213,7 @@ describe("git", () => {
         .spyOn(childProcess, "execSync")
         .mockImplementationOnce(() => {
           throw new Error(
-            "fatal: not a git repository (or any of the parent directories): .git"
+            "fatal: not a git repository (or any of the parent directories): .git",
           );
         })
         .mockImplementationOnce(() => {

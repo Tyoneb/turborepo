@@ -13,7 +13,7 @@ describe("getVersionInfo", () => {
     assert.deepStrictEqual(result, { version: "1.0.0", npmTag: "beta" });
     assert.equal(
       mockReadFile.mock.calls[0].arguments[0],
-      "some-path/version.txt"
+      "some-path/version.txt",
     );
   });
 

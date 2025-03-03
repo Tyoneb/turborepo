@@ -100,14 +100,14 @@ async function create(args: CreateArgs): Promise<void> {
       action: "create",
       packageManager: PACKAGE_MANAGER_DETAILS.name,
       project,
-    })
+    }),
   );
 
   const packageJson = getPackageJson({ workspaceRoot: project.paths.root });
   logger.rootHeader();
   packageJson.packageManager = `${to.name}@${to.version}`;
   logger.rootStep(
-    `adding "packageManager" field to ${project.name} root "package.json"`
+    `adding "packageManager" field to ${project.name} root "package.json"`,
   );
 
   // write the changes
@@ -120,7 +120,7 @@ async function create(args: CreateArgs): Promise<void> {
         path.join(project.paths.root, "pnpm-workspace.yaml"),
         `packages:\n${project.workspaceData.globs
           .map((w) => `  - "${w}"`)
-          .join("\n")}`
+          .join("\n")}`,
       );
     }
   }
@@ -160,7 +160,7 @@ async function remove(args: RemoveArgs): Promise<void> {
       action: "remove",
       packageManager: PACKAGE_MANAGER_DETAILS.name,
       project,
-    })
+    }),
   );
   const packageJson = getPackageJson({ workspaceRoot: project.paths.root });
 
@@ -172,7 +172,7 @@ async function remove(args: RemoveArgs): Promise<void> {
   }
 
   logger.subStep(
-    `removing "packageManager" field in ${project.name} root "package.json"`
+    `removing "packageManager" field in ${project.name} root "package.json"`,
   );
   delete packageJson.packageManager;
 
@@ -189,8 +189,8 @@ async function remove(args: RemoveArgs): Promise<void> {
       logger.subStep(`removing "node_modules"`);
       await Promise.all(
         allModulesDirs.map((dir) =>
-          fs.rm(dir, { recursive: true, force: true })
-        )
+          fs.rm(dir, { recursive: true, force: true }),
+        ),
       );
     } catch (err) {
       throw new ConvertError("Failed to remove node_modules", {
@@ -210,7 +210,7 @@ async function clean(args: CleanArgs): Promise<void> {
   const { project, logger, options } = args;
 
   logger.subStep(
-    `removing ${path.relative(project.paths.root, project.paths.lockfile)}`
+    `removing ${path.relative(project.paths.root, project.paths.lockfile)}`,
   );
   if (!options?.dry) {
     fs.rmSync(project.paths.lockfile, { force: true });
@@ -229,8 +229,8 @@ async function convertLock(args: ConvertArgs): Promise<void> {
     logger.subStep(
       `converting ${path.relative(
         project.paths.root,
-        project.paths.lockfile
-      )} to ${PACKAGE_MANAGER_DETAILS.lock}`
+        project.paths.lockfile,
+      )} to ${PACKAGE_MANAGER_DETAILS.lock}`,
     );
   };
 

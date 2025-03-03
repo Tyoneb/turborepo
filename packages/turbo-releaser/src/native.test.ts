@@ -12,10 +12,10 @@ describe("generateNativePackage", () => {
     const mockRm = mock.fn((_path: string) => Promise.resolve());
     const mockMkdir = mock.fn((_path: string) => Promise.resolve());
     const mockCopyFile = mock.fn((_src: string, _dst: string) =>
-      Promise.resolve()
+      Promise.resolve(),
     );
     const mockWriteFile = mock.fn((_path: string, _data: string) =>
-      Promise.resolve()
+      Promise.resolve(),
     );
 
     t.mock.method(fs, "rm", mockRm);
@@ -35,24 +35,24 @@ describe("generateNativePackage", () => {
     assert.equal(mockMkdir.mock.calls.length, 1);
     assert.equal(
       mockMkdir.mock.calls[0].arguments[0],
-      path.join(outputDir, "bin")
+      path.join(outputDir, "bin"),
     );
 
     // Assert copyFile was called correctly
     assert.equal(mockCopyFile.mock.calls.length, 2);
     assert.ok(
-      mockCopyFile.mock.calls[0].arguments[0].endsWith("template/README.md")
+      mockCopyFile.mock.calls[0].arguments[0].endsWith("template/README.md"),
     );
     assert.equal(
       mockCopyFile.mock.calls[0].arguments[1],
-      path.join(outputDir, "README.md")
+      path.join(outputDir, "README.md"),
     );
     assert.ok(
-      mockCopyFile.mock.calls[1].arguments[0].endsWith("template/LICENSE")
+      mockCopyFile.mock.calls[1].arguments[0].endsWith("template/LICENSE"),
     );
     assert.equal(
       mockCopyFile.mock.calls[1].arguments[1],
-      path.join(outputDir, "LICENSE")
+      path.join(outputDir, "LICENSE"),
     );
 
     // Assert writeFile was called correctly
@@ -71,7 +71,7 @@ describe("generateNativePackage", () => {
     assert.equal(packageJson.version, version);
     assert.equal(
       packageJson.description,
-      "The darwin-x64 binary for turbo, a monorepo build system."
+      "The darwin-x64 binary for turbo, a monorepo build system.",
     );
     assert.deepEqual(packageJson.os, ["darwin"]);
     assert.deepEqual(packageJson.cpu, ["x64"]);
@@ -81,10 +81,10 @@ describe("generateNativePackage", () => {
     const mockRm = mock.fn((_path: string) => Promise.resolve());
     const mockMkdir = mock.fn((_path: string) => Promise.resolve());
     const mockCopyFile = mock.fn((_src: string, _dst: string) =>
-      Promise.resolve()
+      Promise.resolve(),
     );
     const mockWriteFile = mock.fn((_path: string, _data: string) =>
-      Promise.resolve()
+      Promise.resolve(),
     );
 
     t.mock.method(fs, "rm", mockRm);
@@ -100,11 +100,11 @@ describe("generateNativePackage", () => {
 
     assert.equal(mockCopyFile.mock.calls.length, 3);
     assert.ok(
-      mockCopyFile.mock.calls[0].arguments[0].endsWith("template/bin/turbo")
+      mockCopyFile.mock.calls[0].arguments[0].endsWith("template/bin/turbo"),
     );
     assert.equal(
       mockCopyFile.mock.calls[0].arguments[1],
-      path.join(outputDir, "bin", "turbo")
+      path.join(outputDir, "bin", "turbo"),
     );
     const actualPackageJsonContents = mockWriteFile.mock.calls[0].arguments[1];
     const actualPackageJson = JSON.parse(actualPackageJsonContents) as {
@@ -125,7 +125,7 @@ describe("generateNativePackage", () => {
         version: "1.2.0",
         outputDir,
       }),
-      { message: "Failed to remove directory" }
+      { message: "Failed to remove directory" },
     );
   });
 });

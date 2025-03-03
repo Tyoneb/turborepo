@@ -7,7 +7,7 @@ import type { TurboIgnoreOptions } from "./types";
 
 export function getTurboVersion(
   args: TurboIgnoreOptions,
-  root: string
+  root: string,
 ): string | null {
   let { turboVersion } = args;
   if (turboVersion) {
@@ -28,7 +28,7 @@ export function getTurboVersion(
     }
   } catch (e) {
     error(
-      `"${packageJsonPath}" could not be read. turbo-ignore turbo version inference failed`
+      `"${packageJsonPath}" could not be read. turbo-ignore turbo version inference failed`,
     );
     return null;
   }
@@ -49,7 +49,7 @@ export function getTurboVersion(
     return null;
   } catch (e) {
     error(
-      `"${turboJSONPath}" could not be read. turbo-ignore turbo version inference failed`
+      `"${turboJSONPath}" could not be read. turbo-ignore turbo version inference failed`,
     );
     return null;
   }

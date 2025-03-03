@@ -47,74 +47,74 @@ describe("TelemetryClient", () => {
 
     assert.deepEqual(
       mockPost.mock.calls[0].arguments[0],
-      "https://example.com/api/turborepo/v1/events"
+      "https://example.com/api/turborepo/v1/events",
     );
 
     assert.equal(mockPost.mock.calls[0].arguments[1].json.length, 2);
     assert.deepEqual(
       Object.keys(mockPost.mock.calls[0].arguments[1].json[0].package),
-      ["id", "key", "value", "package_name", "package_version", "parent_id"]
+      ["id", "key", "value", "package_name", "package_version", "parent_id"],
     );
 
     assert.equal(
       typeof mockPost.mock.calls[0].arguments[1].json[0].package.id,
-      "string"
+      "string",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.key,
-      "command:test-command"
+      "command:test-command",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.value,
-      "start"
+      "start",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.package_name,
-      "create-turbo"
+      "create-turbo",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.package_version,
-      "1.0.0"
+      "1.0.0",
     );
 
     assert.deepEqual(
       Object.keys(mockPost.mock.calls[0].arguments[1].json[1].package),
-      ["id", "key", "value", "package_name", "package_version", "parent_id"]
+      ["id", "key", "value", "package_name", "package_version", "parent_id"],
     );
     assert.equal(
       typeof mockPost.mock.calls[0].arguments[1].json[1].package.id,
-      "string"
+      "string",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[1].package.key,
-      "command:test-command"
+      "command:test-command",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[1].package.value,
-      "end"
+      "end",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[1].package.package_name,
-      "create-turbo"
+      "create-turbo",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[1].package.package_version,
-      "1.0.0"
+      "1.0.0",
     );
 
     assert.equal(
       "x-turbo-session-id" in mockPost.mock.calls[0].arguments[1].headers,
-      true
+      true,
     );
     assert.equal(
       "x-turbo-telemetry-id" in mockPost.mock.calls[0].arguments[1].headers,
-      true
+      true,
     );
     assert.equal(
       /create-turbo 1\.0\.0/.test(
-        mockPost.mock.calls[0].arguments[1].headers["User-Agent"]
+        mockPost.mock.calls[0].arguments[1].headers["User-Agent"],
       ),
-      true
+      true,
     );
 
     assert.equal(client.hasPendingEvents(), false);
@@ -219,47 +219,47 @@ describe("TelemetryClient", () => {
     assert.equal(mockPost.mock.callCount(), 1);
     assert.equal(
       mockPost.mock.calls[0].arguments[0],
-      "https://example.com/api/turborepo/v1/events"
+      "https://example.com/api/turborepo/v1/events",
     );
 
     assert.equal(mockPost.mock.calls[0].arguments[1].json.length, 1);
     assert.deepEqual(
       Object.keys(mockPost.mock.calls[0].arguments[1].json[0].package),
-      ["id", "key", "value", "package_name", "package_version", "parent_id"]
+      ["id", "key", "value", "package_name", "package_version", "parent_id"],
     );
     assert.equal(
       typeof mockPost.mock.calls[0].arguments[1].json[0].package.id,
-      "string"
+      "string",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.key,
-      "command:test-command"
+      "command:test-command",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.value,
-      "start"
+      "start",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.package_name,
-      "create-turbo"
+      "create-turbo",
     );
     assert.equal(
       mockPost.mock.calls[0].arguments[1].json[0].package.package_version,
-      "1.0.0"
+      "1.0.0",
     );
 
     assert.equal(
       "x-turbo-session-id" in mockPost.mock.calls[0].arguments[1].headers,
-      true
+      true,
     );
     assert.equal(
       "x-turbo-telemetry-id" in mockPost.mock.calls[0].arguments[1].headers,
-      true
+      true,
     );
 
     assert.match(
       mockPost.mock.calls[0].arguments[1].headers["User-Agent"],
-      /create-turbo 1\.0\.0/
+      /create-turbo 1\.0\.0/,
     );
 
     assert.equal(client.hasPendingEvents(), false);

@@ -66,8 +66,8 @@ export async function createProject({
       if (repoUrl.origin !== "https://github.com") {
         logger.error(
           `Invalid URL: ${picocolors.red(
-            `"${example}"`
-          )}. Only GitHub repositories are supported. Please use a GitHub URL and try again.`
+            `"${example}"`,
+          )}. Only GitHub repositories are supported. Please use a GitHub URL and try again.`,
         );
         process.exit(1);
       }
@@ -77,8 +77,8 @@ export async function createProject({
       if (!repoInfo) {
         logger.error(
           `Unable to fetch repository information from: ${picocolors.red(
-            `"${example}"`
-          )}. Please fix the URL and try again.`
+            `"${example}"`,
+          )}. Please fix the URL and try again.`,
         );
         process.exit(1);
       }
@@ -88,8 +88,8 @@ export async function createProject({
       if (!found) {
         logger.error(
           `Could not locate the repository for ${picocolors.red(
-            `"${example}"`
-          )}. Please check that the repository exists and try again.`
+            `"${example}"`,
+          )}. Please check that the repository exists and try again.`,
         );
         process.exit(1);
       }
@@ -99,12 +99,12 @@ export async function createProject({
       if (!found) {
         logger.error(
           `Could not locate an example named ${picocolors.red(
-            `"${example}"`
+            `"${example}"`,
           )}. It could be due to the following:\n`,
           `1. Your spelling of example ${picocolors.red(
-            `"${example}"`
+            `"${example}"`,
           )} might be incorrect.\n`,
-          "2. You might not be connected to the internet or you are behind a proxy."
+          "2. You might not be connected to the internet or you are behind a proxy.",
         );
         process.exit(1);
       }
@@ -115,10 +115,10 @@ export async function createProject({
 
   if (!(await isWriteable(path.dirname(root)))) {
     logger.error(
-      "The application path is not writable, please check folder permissions and try again."
+      "The application path is not writable, please check folder permissions and try again.",
     );
     logger.error(
-      "It is likely you do not have write permissions for this folder."
+      "It is likely you do not have write permissions for this folder.",
     );
     process.exit(1);
   }
@@ -136,7 +136,7 @@ export async function createProject({
     logger.error(
       `${picocolors.dim(root)} has ${conflicts.length} conflicting ${
         conflicts.length === 1 ? "file" : "files"
-      } - please try a different location`
+      } - please try a different location`,
     );
     process.exit(1);
   }
@@ -149,7 +149,7 @@ export async function createProject({
    */
   logger.log();
   const loader = logger.turboLoader(
-    "Downloading files... (This might take a moment)"
+    "Downloading files... (This might take a moment)",
   );
   try {
     if (!isDefaultExample && repoInfo) {
@@ -165,7 +165,7 @@ export async function createProject({
     }
   } catch (reason) {
     throw new DownloadError(
-      isErrorLike(reason) ? reason.message : String(reason)
+      isErrorLike(reason) ? reason.message : String(reason),
     );
   } finally {
     loader.stop();

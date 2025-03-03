@@ -151,12 +151,12 @@ describe("add-package-manager-2", () => {
           getWorkspaceDetailsMockReturnValue({
             root,
             packageManager,
-          })
+          }),
         );
 
       // verify package manager
       expect(JSON.parse(read("package.json") || "{}").packageManager).toEqual(
-        existingPackageManagerString
+        existingPackageManagerString,
       );
 
       // run the transformer
@@ -174,7 +174,7 @@ describe("add-package-manager-2", () => {
         options.dryRun
           ? undefined
           : existingPackageManagerString ||
-              `${packageManager}@${packageManagerVersion}`
+              `${packageManager}@${packageManagerVersion}`,
       );
 
       // result should be correct
@@ -190,7 +190,7 @@ describe("add-package-manager-2", () => {
 
       mockGetAvailablePackageManagers.mockRestore();
       mockGetWorkspaceDetails.mockRestore();
-    }
+    },
   );
 
   describe("errors", () => {
@@ -204,7 +204,7 @@ describe("add-package-manager-2", () => {
 
       // package manager should not exist
       expect(
-        JSON.parse(read("package.json") || "{}").packageManager
+        JSON.parse(read("package.json") || "{}").packageManager,
       ).toBeUndefined();
       // run the transformer
       const result = await transformer({
@@ -216,7 +216,7 @@ describe("add-package-manager-2", () => {
 
       // result should be correct
       expect(result.fatalError?.message).toMatch(
-        /Unable to determine package manager for .*?/
+        /Unable to determine package manager for .*?/,
       );
 
       mockGetWorkspaceDetails.mockRestore();
@@ -241,12 +241,12 @@ describe("add-package-manager-2", () => {
           getWorkspaceDetailsMockReturnValue({
             root,
             packageManager: "npm",
-          })
+          }),
         );
 
       // package manager should not exist
       expect(
-        JSON.parse(read("package.json") || "{}").packageManager
+        JSON.parse(read("package.json") || "{}").packageManager,
       ).toBeUndefined();
       // run the transformer
       const result = await transformer({
@@ -259,7 +259,7 @@ describe("add-package-manager-2", () => {
 
       // result should be correct
       expect(result.fatalError?.message).toMatch(
-        /Unable to determine package manager version for .*?/
+        /Unable to determine package manager version for .*?/,
       );
 
       mockGetAvailablePackageManagers.mockRestore();
@@ -289,7 +289,7 @@ describe("add-package-manager-2", () => {
           getWorkspaceDetailsMockReturnValue({
             root,
             packageManager,
-          })
+          }),
         );
 
       const mockWriteJsonSync = jest
@@ -300,7 +300,7 @@ describe("add-package-manager-2", () => {
 
       // package manager should not exist
       expect(
-        JSON.parse(read("package.json") || "{}").packageManager
+        JSON.parse(read("package.json") || "{}").packageManager,
       ).toBeUndefined();
       // run the transformer
       const result = await transformer({
@@ -310,12 +310,12 @@ describe("add-package-manager-2", () => {
 
       // package manager should still not exist (we couldn't write it)
       expect(
-        JSON.parse(read("package.json") || "{}").packageManager
+        JSON.parse(read("package.json") || "{}").packageManager,
       ).toBeUndefined();
 
       // result should be correct
       expect(result.fatalError?.message).toMatch(
-        "Encountered an error while transforming files"
+        "Encountered an error while transforming files",
       );
       expect(result.changes).toMatchInlineSnapshot(`
         {

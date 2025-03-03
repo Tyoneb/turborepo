@@ -57,7 +57,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -144,7 +144,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     const packageJson = readJson("package.json");
@@ -213,7 +213,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -298,7 +298,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -372,7 +372,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -425,7 +425,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -455,7 +455,7 @@ describe("migrate", () => {
       {
         cwd: root,
         stdio: "pipe",
-      }
+      },
     );
 
     // restore mocks
@@ -502,7 +502,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
     const mockedExecSync = jest
       .spyOn(childProcess, "execSync")
@@ -562,7 +562,7 @@ describe("migrate", () => {
       {
         cwd: root,
         stdio: "pipe",
-      }
+      },
     );
 
     // restore mocks
@@ -610,7 +610,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
     const mockedExecSync = jest
       .spyOn(childProcess, "execSync")
@@ -697,7 +697,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -743,7 +743,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -790,7 +790,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -847,7 +847,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {
@@ -961,7 +961,7 @@ describe("migrate", () => {
         getWorkspaceDetailsMockReturnValue({
           root,
           packageManager,
-        })
+        }),
       );
 
     await migrate(root, {

@@ -33,7 +33,7 @@ export async function convertProject({
   options?: Options;
 }) {
   logger.header(
-    `Converting project from ${project.packageManager} to ${convertTo.name}.`
+    `Converting project from ${project.packageManager} to ${convertTo.name}.`,
   );
 
   if (!options?.ignoreUnchangedPackageManager) {
@@ -48,7 +48,7 @@ export async function convertProject({
         `${convertTo.name} is not installed, or could not be located`,
         {
           type: "package_manager-could_not_be_found",
-        }
+        },
       );
     }
   }

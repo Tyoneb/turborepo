@@ -4,7 +4,7 @@ import { execSync } from "node:child_process";
 function exec(
   command: string,
   opts: ExecSyncOptions,
-  fallback?: string
+  fallback?: string,
 ): string | undefined {
   try {
     const rawResult = execSync(command, { stdio: "pipe", ...opts });

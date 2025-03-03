@@ -105,14 +105,14 @@ describe("clean-globs", () => {
 
   it("should collapse back-to-back doublestars and change **.ext to **/*.ext", () => {
     expect(fixGlobPattern("../../app-store/**/**/*.js")).toBe(
-      "../../app-store/**/*.js"
+      "../../app-store/**/*.js",
     );
     expect(fixGlobPattern("**/**/result.json")).toBe("**/result.json");
   });
 
   it("should collapse back-to-back doublestars and change prefix** to prefix*/**", () => {
     expect(fixGlobPattern("../../app-store/**/**prefix**")).toBe(
-      "../../app-store/**/*prefix*/**"
+      "../../app-store/**/*prefix*/**",
     );
     expect(fixGlobPattern("**/**/prefix**")).toBe("**/prefix*/**");
   });
@@ -122,7 +122,7 @@ describe("clean-globs", () => {
     expect(fixGlobPattern("src/**/test/*.js")).toBe("src/**/test/*.js");
     expect(fixGlobPattern("src/**/test/**/*.js")).toBe("src/**/test/**/*.js");
     expect(fixGlobPattern("src/**/test/**/result.json")).toBe(
-      "src/**/test/**/result.json"
+      "src/**/test/**/result.json",
     );
   });
 

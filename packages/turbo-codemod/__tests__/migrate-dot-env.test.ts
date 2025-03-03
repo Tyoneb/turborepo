@@ -308,7 +308,7 @@ describe("migrate-dot-env", () => {
     expect(read("turbo.json")).toBeUndefined();
     expect(result.fatalError).toBeDefined();
     expect(result.fatalError?.message).toMatch(
-      /No turbo\.json found at .*?\. Is the path correct\?/
+      /No turbo\.json found at .*?\. Is the path correct\?/,
     );
   });
 });

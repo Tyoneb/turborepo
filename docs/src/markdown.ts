@@ -50,7 +50,7 @@ const getAllMdxFilePaths = async (): Promise<string[]> => {
 
 // Returns the slugs of all headings in a tree
 const getHeadingsFromMarkdownTree = (
-  tree: ReturnType<typeof markdownProcessor.parse>
+  tree: ReturnType<typeof markdownProcessor.parse>,
 ): string[] => {
   const headings: string[] = [];
   slugger.reset();
@@ -110,7 +110,7 @@ const getIdsFromHhtmlNodes = (tree: any) => {
     .map((node: any) => unified().use(rehypeParse).parse(node.value));
 
   return selectAll("[id]", htmlNodes[0]).map(
-    (node) => node.properties.id as string
+    (node) => node.properties.id as string,
   );
 };
 
@@ -122,7 +122,7 @@ const getIdsFromHhtmlNodes = (tree: any) => {
  * doc pages: `api/example`
  */
 const prepareDocumentMapEntry = async (
-  path: string
+  path: string,
 ): Promise<[string, Document]> => {
   try {
     const mdxContent = await fs.readFile(path, "utf8");
@@ -206,7 +206,7 @@ const validateHashLink = (doc: Document, href: string) => {
 const traverseTreeAndValidateLinks = (
   documentMap: Map<string, Document>,
   tree: unknown,
-  doc: Document
+  doc: Document,
 ): LinkError[] => {
   let errors: LinkError[] = [];
 
@@ -240,7 +240,7 @@ export const collectLinkErrors = async (): Promise<LinkError[]> => {
   const allMdxFilePaths = await getAllMdxFilePaths();
 
   const documentMap = new Map(
-    await Promise.all(allMdxFilePaths.map(prepareDocumentMapEntry))
+    await Promise.all(allMdxFilePaths.map(prepareDocumentMapEntry)),
   );
 
   const reportsWithErrors = allMdxFilePaths.map(async (filePath) => {

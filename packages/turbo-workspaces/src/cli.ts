@@ -23,18 +23,18 @@ workspacesCli
   .option(
     "--skip-install",
     "Do not run a package manager install after conversion",
-    false
+    false,
   )
   .option(
     "--ignore-unchanged-package-manager",
     "Prevent script failure if the package manager is unchanged",
-    false
+    false,
   )
   .option("--dry", "Dry run (no changes are made to files)", false)
   .option(
     "--force",
     "Bypass Git safety checks and forcibly run conversion",
-    false
+    false,
   )
   .action(convert);
 

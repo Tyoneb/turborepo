@@ -10,7 +10,7 @@ import {
 } from "../src/transforms/migrate-env-var-dependencies";
 
 const getTestTurboConfig = (
-  override: SchemaV1 = { pipeline: {} }
+  override: SchemaV1 = { pipeline: {} },
 ): SchemaV1 => {
   const config = {
     $schema: "./docs/public/schema.json",
@@ -736,7 +736,7 @@ describe("migrate-env-var-dependencies", () => {
       expect(read("turbo.json")).toBeUndefined();
       expect(result.fatalError).toBeDefined();
       expect(result.fatalError?.message).toMatch(
-        /No turbo\.json found at .*?\. Is the path correct\?/
+        /No turbo\.json found at .*?\. Is the path correct\?/,
       );
     });
 
@@ -754,7 +754,7 @@ describe("migrate-env-var-dependencies", () => {
 
       expect(result.fatalError).toBeDefined();
       expect(result.fatalError?.message).toMatch(
-        'turbo" key detected in package.json. Run `npx @turbo/codemod transform create-turbo-config` first'
+        'turbo" key detected in package.json. Run `npx @turbo/codemod transform create-turbo-config` first',
       );
     });
   });

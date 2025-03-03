@@ -31,7 +31,7 @@ export type FileWriter = (filePath: string, contents: string | object) => void;
 
 export type FileDiffer = (
   before: string | object,
-  after: string | object
+  after: string | object,
 ) => Array<Change>;
 
 export interface TransformerResults {
